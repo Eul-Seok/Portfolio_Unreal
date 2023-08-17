@@ -14,6 +14,11 @@
 #include "Skill/Skill_Base.h"
 #include "ActorComponent/PlayerSkillsComponent.h"
 
+#include "Widget/QuickSlotWindow.h"
+#include "Widget/QuickSlot.h"
+#include "Widget/SkillWindow.h"
+#include "Widget/SkillSlot.h"
+
 
 AGameMgr::AGameMgr():
 	m_pInventoryMgr{}, m_pItemMgr{}, m_pWidgetMgr{}, m_pAffectMgr{}, m_pSkillMgr{}, m_pSoundMgr{}, m_QuestLogComponent{}, m_Player{}
@@ -33,6 +38,7 @@ void AGameMgr::BeginPlay()
 	Init_Managers();
 	m_pWidgetMgr->F_ShowGameMethod();
 	DELE_GameClear.AddUFunction(this, FName("GameClear"));
+	TestSetting();
 }
 
 void AGameMgr::Init_Managers()
@@ -55,6 +61,19 @@ void AGameMgr::Init_Managers()
 void AGameMgr::GameClear()
 {
 	m_pWidgetMgr->F_ToggleGameClearMenu();
+}
+
+void AGameMgr::TestSetting()
+{
+	uint8 nNum = 2;
+	FName ItemRowName = FName("HealthPotion");
+	for (uint8 i = 0; i < nNum; i++)
+	{
+		m_pInventoryMgr->F_ItemAdd(&ItemRowName);
+		(*m_pWidgetMgr->F_GetSkillWindow()->F_GetarSkillSlot())[i]->F_SkillLevelUp();
+		(*m_pWidgetMgr->F_GetQuickSlotWindow()->F_GetQuickSlotArray())[i]->F_QuickSlotRegistration(ESlotType::E_InventorySlot, i);
+		(*m_pWidgetMgr->F_GetQuickSlotWindow()->F_GetQuickSlotArray())[i + nNum]->F_QuickSlotRegistration(ESlotType::E_SkillSlot, i);
+	}
 }
 
 void AGameMgr::F_NPCUpdateTextRenderHasQuest()

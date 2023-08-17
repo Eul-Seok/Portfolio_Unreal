@@ -41,6 +41,8 @@ bool UItemManager::F_ItemUse(uint8 Index)
 			TSubclassOf<AWeapon_Base> Weapon = (TSubclassOf<AWeapon_Base>)(*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_ItemClass;
 			m_Player->F_CreateWeapon(Weapon);
 			F_ItemDestroy(Index);
+			FText AlertText = FText::FromString(FString::Printf(TEXT("'V'를 눌러 무기를 착용해주세요")));
+			m_pGameMgr->F_GetWidgetMgr()->F_GetHUD()->F_DisplayTextAlert(&AlertText);
 			return true;
 		}
 		bool bSuccess = ApplyAffect(Index);

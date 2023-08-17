@@ -159,6 +159,7 @@ void ATestCpp1Character::BeginPlay()
 	{
 		GetMesh()->GetAnimInstance()->OnPlayMontageNotifyBegin.AddDynamic(this, &ATestCpp1Character::PlayMontageNotifyBegin);
 		CompleteDelegate.BindUObject(this, &ATestCpp1Character::FunctionToExecuteOnAnimationEnd);
+		CompleteDelegatePlayingMontage.BindUObject(this, &ATestCpp1Character::FunctionToExecuteOnAnimationEndEvasion);
 		CompleteDelegateEquip.BindUObject(this, &ATestCpp1Character::FunctionToExecuteOnAnimationEndEquip);
 	}
 
@@ -179,7 +180,12 @@ void ATestCpp1Character::PlayMontageNotifyBegin(FName NotifyName, const FBranchi
 
 void ATestCpp1Character::FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted)
 {
-	ResetAnimationCondition();
+	ResetAttackCombo();
+}
+
+void ATestCpp1Character::FunctionToExecuteOnAnimationEndEvasion(UAnimMontage* animMontage, bool bInterrupted)
+{
+	ResetPlayingMontage();
 }
 
 void ATestCpp1Character::FunctionToExecuteOnAnimationEndEquip(UAnimMontage* animMontage, bool bInterrupted)
@@ -257,15 +263,16 @@ void ATestCpp1Character::StopStun()
 	m_bPlayingMontage = false;
 }
 
-void ATestCpp1Character::ResetAnimationCondition()
+void ATestCpp1Character::ResetPlayingMontage()
+{
+	m_bPlayingMontage = false;
+	HitBoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+}
+
+void ATestCpp1Character::ResetAttackCombo()
 {
 	m_nAttackCombo = 0;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
-	if (m_bEvasion)
-	{
-		m_bEvasion = false;
-		HitBoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	}
 	if (!GetMesh()->GetAnimInstance()->OnPlayMontageNotifyBegin.IsBound())
 	{
 		GetMesh()->GetAnimInstance()->OnPlayMontageNotifyBegin.AddDynamic(this, &ATestCpp1Character::PlayMontageNotifyBegin);
@@ -286,7 +293,8 @@ void ATestCpp1Character::ChangeAnimInstance()
 		m_RightHandWeapon = Cast<AWeapon_Base>(ChildActor_WeaponRight->GetChildActor());
 		m_CurrentSkillWeaponType = ESkillWeaponType::E_Default;
 	}
-	ResetAnimationCondition();
+	ResetAttackCombo();
+	ResetPlayingMontage();
 }
 
 void ATestCpp1Character::ResetAnimInstance()
@@ -305,7 +313,8 @@ void ATestCpp1Character::ResetAnimInstance()
 			m_RightHandWeapon = Cast<AWeapon_Base>(ChildActor_WeaponRight->GetChildActor());
 			m_CurrentSkillWeaponType = ESkillWeaponType::E_Default;
 		}
-		ResetAnimationCondition();
+		ResetAttackCombo();
+		ResetPlayingMontage();
 	}
 }
 
@@ -448,6 +457,8 @@ void ATestCpp1Character::F_PlayKnockBack()
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	SetActorRotation(UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), FVector(m_TargetActorLocation.X, m_TargetActorLocation.Y, GetActorLocation().Z)));
 	AnimInstance->Montage_Play(m_AnimKnockBack, 1.0f, EMontagePlayReturnType::MontageLength);
+	AnimInstance->Montage_SetEndDelegate(CompleteDelegatePlayingMontage, m_AnimKnockBack);
+	m_bPlayingMontage = true;
 	UGameplayStatics::PlaySound2D(GetWorld(), m_SoundKnockBack);
 }
 
@@ -467,29 +478,29 @@ void ATestCpp1Character::F_Evasion(float Direction)
 {
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	bool bjump = (EMovementMode::MOVE_Falling == GetCharacterMovement()->MovementMode);
-	if (!bjump && !m_bEvasion)
+	if (!bjump && !m_bPlayingMontage)
 	{
-		m_bEvasion = true;
+		m_bPlayingMontage = true;
 		HitBoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		if (Direction < 45.0f && Direction > -45.0f)
 		{
 			AnimInstance->Montage_Play(m_AnimEvasion_F, 0.8f, EMontagePlayReturnType::MontageLength);
-			AnimInstance->Montage_SetEndDelegate(CompleteDelegate, m_AnimEvasion_F);
+			AnimInstance->Montage_SetEndDelegate(CompleteDelegatePlayingMontage, m_AnimEvasion_F);
 		}
 		else if (Direction >= 45.0f && Direction < 135.0f)
 		{
 			AnimInstance->Montage_Play(m_AnimEvasion_R, 0.8f, EMontagePlayReturnType::MontageLength);
-			AnimInstance->Montage_SetEndDelegate(CompleteDelegate, m_AnimEvasion_R);
+			AnimInstance->Montage_SetEndDelegate(CompleteDelegatePlayingMontage, m_AnimEvasion_R);
 		}
 		else if (Direction <= -45.0f && Direction > -135.0f)
 		{
 			AnimInstance->Montage_Play(m_AnimEvasion_L, 0.8f, EMontagePlayReturnType::MontageLength);
-			AnimInstance->Montage_SetEndDelegate(CompleteDelegate, m_AnimEvasion_L);
+			AnimInstance->Montage_SetEndDelegate(CompleteDelegatePlayingMontage, m_AnimEvasion_L);
 		}
 		else
 		{
 			AnimInstance->Montage_Play(m_AnimEvasion_B, 0.8f, EMontagePlayReturnType::MontageLength);
-			AnimInstance->Montage_SetEndDelegate(CompleteDelegate, m_AnimEvasion_B);
+			AnimInstance->Montage_SetEndDelegate(CompleteDelegatePlayingMontage, m_AnimEvasion_B);
 		}
 	}
 }
@@ -504,7 +515,7 @@ void ATestCpp1Character::F_Revival()
 	SetActorTransform(m_RevivalPoint->GetActorTransform());
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	AnimInstance->Montage_Stop(0.20f, m_AnimPlayerDie);
-	HitBoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	ResetAnimInstance();
 	Tags.Add(FName("Player")); 
 	m_pGameMgr->F_GetWidgetMgr()->F_ToggleRevivalMenu();
 }

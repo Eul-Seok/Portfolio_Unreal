@@ -80,7 +80,6 @@ protected:
 	bool m_bPlayingMontage;
 	bool m_bDeath;
 	FVector m_TargetActorLocation;
-	bool m_bEvasion;
 	FTimerHandle m_TimerHandle;
 	FTimerHandle m_PlayerRenderCustomDepthTimer;
 	FTimerHandle m_PlayerStunTimer;
@@ -123,18 +122,21 @@ protected:
 	UAnimMontage* m_AnimEvasion_L;
 
 	FOnMontageEnded CompleteDelegate;
+	FOnMontageEnded CompleteDelegatePlayingMontage;
 	FOnMontageEnded CompleteDelegateEquip;
 		
 public:
 	UFUNCTION()
 	void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload);
 	void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted);
+	void FunctionToExecuteOnAnimationEndEvasion(UAnimMontage* animMontage, bool bInterrupted);
 	void FunctionToExecuteOnAnimationEndEquip(UAnimMontage* animMontage, bool bInterrupted);
 	void BindOverapEvent();
 	float CalculateHitDamage(UPrimitiveComponent* OverlappedComp);
 	void PlayerDie();
 	void StopStun();
-	void ResetAnimationCondition();
+	void ResetPlayingMontage();
+	void ResetAttackCombo();
 	void ChangeAnimInstance();
 	void ResetAnimInstance();
 	void RenderCustomDepthOn();

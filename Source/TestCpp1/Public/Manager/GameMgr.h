@@ -43,6 +43,7 @@ protected:
 	void Init_Managers();
 	UFUNCTION()
 	void GameClear();
+	void TestSetting();
 
 public:
 	void F_NPCUpdateTextRenderHasQuest();
