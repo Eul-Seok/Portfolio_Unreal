@@ -7,6 +7,8 @@
 
 DECLARE_MULTICAST_DELEGATE(FDele_Multi);
 
+class AQuest;
+
 UCLASS()
 class TESTCPP1_API ANPC : public ACharacter
 {
@@ -44,7 +46,7 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
-	bool CheckPreRequisiteQuest(class AQuest* Quest);
+	bool CheckPreRequisiteQuest(AQuest* Quest);
 	bool CanDisplayQuest();
 	bool CheckAcceptQuest();
 	void UpdateTextRenderRotation(UTextRenderComponent* TextRender);

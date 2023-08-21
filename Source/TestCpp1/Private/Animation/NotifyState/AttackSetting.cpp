@@ -8,7 +8,6 @@
 #include "Manager/SkillManager.h"
 #include "Manager/AffectManager.h"
 #include "Skill/Skill_Base.h"
-#include "Animation/AttackData.h"
 #include "Engine/DataTable.h"
 #include "Item/Weapon_Base.h"
 #include "Affect/Affect_base.h"
@@ -54,7 +53,7 @@ float UAttackSetting::CalculatefFinalAffectValue(float AffectValue, uint8 SkillL
 	return fFinalAffectValue;
 }
 
-void UAttackSetting::GetInterfaceAffect(AActor* Pawn)
+void UAttackSetting::GetInterfaceAffect(const AActor* Pawn)
 {
 	if (Pawn->IsA(ATestCpp1Character::StaticClass()))
 	{

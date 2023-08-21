@@ -7,6 +7,9 @@
 #include "Skill/SkillData.h"
 #include "SkillWindow.generated.h"
 
+class USkillSlot;
+class USlot_Base;
+
 UCLASS()
 class TESTCPP1_API USkillWindow : public UUserWidget
 {
@@ -33,9 +36,9 @@ protected:
 	UPROPERTY()
 	uint8 m_nSkillWeaponTypeCount = 2;
 	UPROPERTY()
-	TArray<class USkillSlot*> m_arSkillSlot;
+	TArray<USkillSlot*> m_arSkillSlot;
 	UPROPERTY()
-	TSubclassOf<class USlot_Base> W_SkillSlot;
+	TSubclassOf<USlot_Base> W_SkillSlot;
 	FSkillData* m_SkillDataDefault;
 
 protected:

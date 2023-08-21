@@ -7,6 +7,7 @@
 #include "Affect/AffectType.h"
 #include "AffectManager.generated.h"
 
+class UAffect_Base;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TESTCPP1_API UAffectManager : public UActorComponent
@@ -18,7 +19,7 @@ public:
 
 protected:
 	UPROPERTY()
-	TArray<class UAffect_base*> m_arAffect;
+	TArray<UAffect_base*> m_arAffect;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EAffectType m_eAffectType;
 

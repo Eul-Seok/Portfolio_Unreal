@@ -6,6 +6,8 @@
 #include "Skill/Skill_Melee.h"
 #include "Skill_Projectile.generated.h"
 
+class AProjectileObject;
+
 UCLASS()
 class TESTCPP1_API ASkill_Projectile : public ASkill_Melee
 {
@@ -16,7 +18,7 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AProjectileObject> m_ProjectileClass;
+	TSubclassOf<AProjectileObject> m_ProjectileClass;
 	AProjectileObject* m_ProjectileObject;
 
 protected:

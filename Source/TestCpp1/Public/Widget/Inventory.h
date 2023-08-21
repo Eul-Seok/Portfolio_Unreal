@@ -6,6 +6,8 @@
 #include "Item/ItemData.h"
 #include "Inventory.generated.h"
 
+class USlot_Base;
+
 UCLASS()
 class TESTCPP1_API UInventory : public UUserWidget
 {
@@ -25,7 +27,7 @@ protected:
 	UPROPERTY()
 	TArray<class UInventorySlot*> m_arInventorySlot;
 	UPROPERTY()
-	TSubclassOf<class USlot_Base> W_InventorySlot;
+	TSubclassOf<USlot_Base> W_InventorySlot;
 
 protected:
 	virtual void NativeOnInitialized() override;

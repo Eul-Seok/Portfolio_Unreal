@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "QuestObjectives.generated.h"
 
+class UQuestSingleObjective;
+
 UCLASS()
 class TESTCPP1_API UQuestObjectives : public UUserWidget
 {
@@ -20,7 +22,7 @@ protected:
 
 protected:
 	UPROPERTY()
-	TSubclassOf<class UQuestSingleObjective> W_QuestSingleObjective;
+	TSubclassOf<UQuestSingleObjective> W_QuestSingleObjective;
 	class AGameMgr* m_pGameMgr;
 	class UQuestLog* m_QuestLog;
 

@@ -9,6 +9,8 @@
 #include "Skill/SkillWeaponType.h"
 #include "SkillData.generated.h"
 
+class ASkill_Base;
+
 USTRUCT(BlueprintType)
 struct FSkillData : public FTableRowBase
 {
@@ -21,7 +23,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ESkillWeaponType m_SkillWeaponType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class ASkill_Base> m_SkillClass;
+	TSubclassOf<ASkill_Base> m_SkillClass;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName m_SkillName;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

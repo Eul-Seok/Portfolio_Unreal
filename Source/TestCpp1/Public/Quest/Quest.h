@@ -9,6 +9,8 @@
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FDele_Multi_OneParam, AActor*);
 
+class AItem;
+
 UCLASS()
 class TESTCPP1_API AQuest : public AActor
 {
@@ -37,7 +39,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AQuest* m_PreRequisiteQuest;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<TSubclassOf<class AItem>> m_arRewardItem;
+	TArray<TSubclassOf<AItem>> m_arRewardItem;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float m_RewardExp;
 	uint8 m_nCurrentAchievementCount;
@@ -48,15 +50,15 @@ protected:
 	virtual void BeginPlay() override;
 
 protected:
-	void CheckObjective(EQuestType QuestType, AActor* Target);
+	void CheckObjective(EQuestType QuestType, const AActor* Target);
 	UFUNCTION()
-	void CallCheckLocationObjective(AActor* LocationReached);
+	void CallCheckLocationObjective(const AActor* LocationReached);
 	UFUNCTION()
-	void CallCheckInteractionObjective(AActor* InteractionTarget);
+	void CallCheckInteractionObjective(const AActor* InteractionTarget);
 	UFUNCTION()
-	void CallCheckCollectionObjective(AActor* CollectedItem);
+	void CallCheckCollectionObjective(const AActor* CollectedItem);
 	UFUNCTION()
-	void CallCheckKilledTargetObjective(AActor* KilledTarget);
+	void CallCheckKilledTargetObjective(const AActor* KilledTarget);
 
 public:
 	void F_Reward();
@@ -73,7 +75,7 @@ public:
 	bool F_GetbAccept();
 	uint8 F_GetCurrentAchievementCount();
 	AQuest* F_GetPreRequisiteQuest();
-	TArray<TSubclassOf<class AItem>>* F_GetarRewardItem();
+	TArray<TSubclassOf<AItem>>* F_GetarRewardItem();
 	float F_GetRewardExp();
 
 public:

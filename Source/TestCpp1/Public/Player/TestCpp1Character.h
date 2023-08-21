@@ -132,7 +132,7 @@ public:
 	void FunctionToExecuteOnAnimationEndEvasion(UAnimMontage* animMontage, bool bInterrupted);
 	void FunctionToExecuteOnAnimationEndEquip(UAnimMontage* animMontage, bool bInterrupted);
 	void BindOverapEvent();
-	float CalculateHitDamage(UPrimitiveComponent* OverlappedComp);
+	float CalculateHitDamage(const UPrimitiveComponent* pOverlappedComp);
 	void PlayerDie();
 	void StopStun();
 	void ResetPlayingMontage();
@@ -150,8 +150,8 @@ public:
 	void F_SetWeaponAttackAvailable(bool IsAttackAvailable);
 	void F_DefaultAttack();
 	bool F_CheckMana(float ManaCost);
-	void F_Hit(UPrimitiveComponent* OverlappedComp);
-	void F_ApplyHitDamage(float fDamage, FVector* vHitImactPoint);
+	void F_Hit(const UPrimitiveComponent* pOverlappedComp);
+	void F_ApplyHitDamage(float fDamage, const FVector* pHitImactPointVector);
 	void F_PlayKnockBack();
 	void F_PlayStun(float fDuration = 2.0f);
 	void F_Evasion(float Direction);

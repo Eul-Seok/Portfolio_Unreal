@@ -6,6 +6,8 @@
 #include "Monster/MonsterSkill_Base.h"
 #include "RampageSkill_StoneThrow.generated.h"
 
+class AProjectileObject;
+
 UCLASS()
 class TESTCPP1_API ARampageSkill_StoneThrow : public AMonsterSkill_Base
 {
@@ -19,7 +21,7 @@ protected:
 	float m_fCastTime;
 	bool m_bHasStone;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AProjectileObject> m_ProjectileClass;
+	TSubclassOf<AProjectileObject> m_ProjectileClass;
 	AProjectileObject* m_ProjectileObject;
 
 protected:

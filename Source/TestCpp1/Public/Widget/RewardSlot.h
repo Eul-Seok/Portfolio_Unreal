@@ -6,6 +6,8 @@
 #include "Widget/Slot_Base.h"
 #include "RewardSlot.generated.h"
 
+class UItemToolTip;
+
 UCLASS()
 class TESTCPP1_API URewardSlot : public USlot_Base
 {
@@ -20,7 +22,7 @@ protected:
 
 protected:
 	UPROPERTY()
-	TSubclassOf<class UItemToolTip> W_ItemToolTip;
+	TSubclassOf<UItemToolTip> W_ItemToolTip;
 	UPROPERTY()
 	class UItemToolTip* m_pItemToolTip;
 

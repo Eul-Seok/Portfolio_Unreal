@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "MonsterSpawner.generated.h"
 
+class AMonster;
+
 UCLASS()
 class TESTCPP1_API AMonsterSpawner : public AActor
 {
@@ -26,7 +28,7 @@ protected:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
 	uint8 m_nMaxMonsterCount;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
-	TSubclassOf<class AMonster> m_MonsterClass;
+	TSubclassOf<AMonster> m_MonsterClass;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
 	float m_fSpawnTimeInterval;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite)

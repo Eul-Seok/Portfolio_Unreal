@@ -207,9 +207,9 @@ void ATestCpp1Character::BindOverapEvent()
 	InteractBoxCollision->OnComponentEndOverlap.AddDynamic(this, &ATestCpp1Character::OnOverlapEndNPC);
 }
 
-float ATestCpp1Character::CalculateHitDamage(UPrimitiveComponent* OverlappedComp)
+float ATestCpp1Character::CalculateHitDamage(const UPrimitiveComponent* pOverlappedComp)
 {
-	UMonsterStatusComponent* MonsterStatusComponent = Cast<AMonster>(OverlappedComp->GetAttachmentRootActor())->F_GetMonsterStatusComponent();
+	UMonsterStatusComponent* MonsterStatusComponent = Cast<AMonster>(pOverlappedComp->GetAttachmentRootActor())->F_GetMonsterStatusComponent();
 	float MonsterStrikingPower = MonsterStatusComponent->F_GetStrikingPower();
 	float MonsterBuffAppliedStrikingPower = MonsterStatusComponent->F_GetBuffAppliedStrikingPower();
 	float MonsterAttackStrikingPower = MonsterStatusComponent->F_GetAttackStrikingPower();
@@ -419,17 +419,17 @@ bool ATestCpp1Character::F_CheckMana(float ManaCost)
 	return bSuccess;
 }
 
-void ATestCpp1Character::F_Hit(UPrimitiveComponent* OverlappedComp)
+void ATestCpp1Character::F_Hit(const UPrimitiveComponent* pOverlappedComp)
 {
 	if (!m_bDeath)
 	{
 		RenderCustomDepthOn();
 		float fDamage{};
 		FVector ImpactPoint{};
-		UParticleSystem* MonsterAttackImpact = Cast<AMonster>(OverlappedComp->GetAttachmentRootActor())->F_GetAttackImpact();
-		m_TargetActorLocation = OverlappedComp->GetAttachmentRootActor()->GetActorLocation();
-		OverlappedComp->GetClosestPointOnCollision(HitBoxCollision->GetComponentLocation(), ImpactPoint);
-		fDamage = CalculateHitDamage(OverlappedComp);
+		UParticleSystem* MonsterAttackImpact = Cast<AMonster>(pOverlappedComp->GetAttachmentRootActor())->F_GetAttackImpact();
+		m_TargetActorLocation = pOverlappedComp->GetAttachmentRootActor()->GetActorLocation();
+		pOverlappedComp->GetClosestPointOnCollision(HitBoxCollision->GetComponentLocation(), ImpactPoint);
+		fDamage = CalculateHitDamage(pOverlappedComp);
 		F_ApplyHitDamage(fDamage, &ImpactPoint);
 		
 		if (MonsterAttackImpact != nullptr)
@@ -441,9 +441,9 @@ void ATestCpp1Character::F_Hit(UPrimitiveComponent* OverlappedComp)
 	}
 }
 
-void ATestCpp1Character::F_ApplyHitDamage(float fDamage, FVector* vHitImactPoint)
+void ATestCpp1Character::F_ApplyHitDamage(float fDamage, const FVector* pHitImactPointVector)
 {
-	FVector HitImpactVector = GetActorLocation() - *vHitImactPoint;
+	FVector HitImpactVector = GetActorLocation() - *pHitImactPointVector;
 	PlayerStatusComponent->F_ReduceHealth(fDamage);
 	if (PlayerStatusComponent->F_GetHealthCurrent() <= 0)
 	{

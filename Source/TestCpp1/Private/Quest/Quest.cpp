@@ -43,7 +43,7 @@ void AQuest::BeginPlay()
 	DELE_KilledTarget.AddUFunction(this, FName("CallCheckKilledTargetObjective"));
 }
 
-void AQuest::CheckObjective(EQuestType QuestType, AActor* Target)
+void AQuest::CheckObjective(EQuestType QuestType, const AActor* Target)
 {
 	bool bUpdateUI{};
 	if (QuestType == EQuestType::E_Location || QuestType == EQuestType::E_Interact)
@@ -81,22 +81,22 @@ void AQuest::CheckObjective(EQuestType QuestType, AActor* Target)
 	}
 }
 
-void AQuest::CallCheckLocationObjective(AActor* LocationReached)
+void AQuest::CallCheckLocationObjective(const AActor* LocationReached)
 {
 	CheckObjective(EQuestType::E_Location, LocationReached);
 }
 
-void AQuest::CallCheckInteractionObjective(AActor* InteractionTarget)
+void AQuest::CallCheckInteractionObjective(const AActor* InteractionTarget)
 {
 	CheckObjective(EQuestType::E_Interact, InteractionTarget);
 }
 
-void AQuest::CallCheckCollectionObjective(AActor* CollectedItem)
+void AQuest::CallCheckCollectionObjective(const AActor* CollectedItem)
 {
 	CheckObjective(EQuestType::E_Collect, CollectedItem);
 }
 
-void AQuest::CallCheckKilledTargetObjective(AActor* KilledTarget)
+void AQuest::CallCheckKilledTargetObjective(const AActor* KilledTarget)
 {
 	CheckObjective(EQuestType::E_Kill, KilledTarget);
 }

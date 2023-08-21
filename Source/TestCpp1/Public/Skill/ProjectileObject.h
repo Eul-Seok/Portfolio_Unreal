@@ -8,6 +8,8 @@
 #include "Skill/SkillData.h"
 #include "ProjectileObject.generated.h"
 
+class IInterface_StatusComponent;
+
 UCLASS()
 class TESTCPP1_API AProjectileObject : public AActor
 {

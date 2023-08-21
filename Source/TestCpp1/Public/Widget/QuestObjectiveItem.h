@@ -23,5 +23,5 @@ protected:
 protected:
 
 public:
-	void F_SetQuestObjectiveInfo(FQuestObjectiveData* pObjectiveData);
+	void F_UpdateQuestObjectiveInfo(const FQuestObjectiveData* pObjectiveData);
 };

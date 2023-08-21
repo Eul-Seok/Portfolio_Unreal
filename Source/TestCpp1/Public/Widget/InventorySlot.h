@@ -4,6 +4,9 @@
 #include "Widget/Slot_Base.h"
 #include "InventorySlot.generated.h"
 
+class UItemPopUp;
+class UItemToolTip;
+
 UCLASS()
 class TESTCPP1_API UInventorySlot : public USlot_Base
 {
@@ -17,9 +20,9 @@ protected:
 	UPROPERTY()
 	uint8 m_nInventoryIndex;
 	UPROPERTY()
-	TSubclassOf<class UItemPopUp> W_ItemPopUp;
+	TSubclassOf<UItemPopUp> W_ItemPopUp;
 	UPROPERTY()
-	TSubclassOf<class UItemToolTip> W_ItemToolTip;
+	TSubclassOf<UItemToolTip> W_ItemToolTip;
 	UPROPERTY()
 	class UItemPopUp* m_pItemPopUp;
 	UPROPERTY()

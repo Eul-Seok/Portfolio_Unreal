@@ -5,6 +5,7 @@
 #include "Components/ActorComponent.h"
 #include "QuestLog.generated.h"
 
+class AQuest;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TESTCPP1_API UQuestLog : public UActorComponent
@@ -16,7 +17,7 @@ public:
 
 protected:
 	UPROPERTY()
-	TArray<class AQuest*> m_arQuest;
+	TArray<AQuest*> m_arQuest;
 	UPROPERTY()
 	AQuest* m_ActiveQuest;
 

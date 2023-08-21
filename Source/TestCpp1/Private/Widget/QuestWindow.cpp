@@ -99,7 +99,7 @@ void UQuestWindow::F_CallUpdateActiveQuestInfo()
 		for (uint8 i = 0; i < (*arQuestObjectiveData).Num(); i++)
 		{
 			UQuestObjectiveItem* NewObjectiveItem = CreateWidget<UQuestObjectiveItem>(this, W_QuestObjectiveItem);
-			NewObjectiveItem->F_SetQuestObjectiveInfo(&(*arQuestObjectiveData)[i]);
+			NewObjectiveItem->F_UpdateQuestObjectiveInfo(&(*arQuestObjectiveData)[i]);
 			ObjectiveList->AddChild(NewObjectiveItem);
 		}
 		RewardBox->SetVisibility(ESlateVisibility::Visible);

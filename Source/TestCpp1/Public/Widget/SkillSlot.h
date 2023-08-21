@@ -5,6 +5,8 @@
 #include "Skill/SkillData.h"
 #include "SkillSlot.generated.h"
 
+class USkillToolTip;
+
 UCLASS()
 class TESTCPP1_API USkillSlot : public USlot_Base
 {
@@ -17,9 +19,9 @@ protected:
 	uint8 m_nSkillWindowIndex;
 	FSkillData* m_pSkillData;
 	UPROPERTY()
-	TSubclassOf<class USkillToolTip> W_SkillToolTip;
+	TSubclassOf<USkillToolTip> W_SkillToolTip;
 	UPROPERTY()
-	class USkillToolTip* m_SkillToolTip;
+	USkillToolTip* m_SkillToolTip;
 	bool m_bPurchased;
 	FTimerHandle m_CooldownTimerHandle;
 

@@ -100,11 +100,11 @@ protected:
 protected:
 	void RemoveBinding();
 	void CheckQuestMonster();
-	void MonsterDie(FVector* vHitImactVector);
+	void MonsterDie(const FVector* pHitImactVector);
 	void MonsterSink();
 	void MonsterDestroy();
-	void Ragdoll(FVector ImpactVector);
-	float CalculateHitDamage(UPrimitiveComponent* OverlappedComp);
+	void Ragdoll(const FVector* pHitImactVector);
+	float CalculateHitDamage(const UPrimitiveComponent* pOverlappedComp);
 	void Reward();
 	void UpdateWidgetRotation();
 	void DisplayTargetHealthBarMini();
@@ -119,8 +119,8 @@ public:
 	UFUNCTION()
 	void F_CallClearTargetIndicator();
 	void F_Attack();
-	void F_Hit(UPrimitiveComponent* OverlappedComp);
-	void F_ApplyHitDamage(float fDamage, FVector* vImactPoint);
+	void F_Hit(const UPrimitiveComponent* pOverlappedComp);
+	void F_ApplyHitDamage(float fDamage, const FVector* pImactPointVector);
 	void F_RotateToFacePlayer();
 	void F_SetWalkSpeed(float Speed);
 	void F_SetWeaponAttackAvailable(EAttackHand AttackType, bool IsAttackAvailable);

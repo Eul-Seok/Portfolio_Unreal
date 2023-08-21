@@ -7,6 +7,9 @@
 #include "Item/ItemData.h"
 #include "QuestContent.generated.h"
 
+class UQuestObjectiveItem;
+class URewardSlot;
+
 UCLASS()
 class TESTCPP1_API UQuestContent : public UUserWidget
 {
@@ -42,9 +45,9 @@ protected:
 
 protected:
 	UPROPERTY()
-	TSubclassOf<class UQuestObjectiveItem> W_QuestObjectiveItem;
+	TSubclassOf<UQuestObjectiveItem> W_QuestObjectiveItem;
 	UPROPERTY()
-	TSubclassOf<class URewardSlot> W_RewardSlot;
+	TSubclassOf<URewardSlot> W_RewardSlot;
 	class AGameMgr* m_pGameMgr;
 	class AQuest* m_Quest;
 

@@ -14,6 +14,8 @@ enum class EMonsterSkill : uint8
 	E_MonsterSkilleMax	UMETA(DisplayName = Max)
 };
 
+class AMonsterSkill_Base;
+
 UCLASS(Blueprintable)
 class TESTCPP1_API UBTTaskNode_UseMonsterSkill : public UBTTaskNode
 {
@@ -29,7 +31,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EMonsterSkill m_eMonsterSkill;
 	UPROPERTY()
-	class AMonsterSkill_Base* m_SpawnMonsterSkill;
+	AMonsterSkill_Base* m_SpawnMonsterSkill;
 	bool bAttacking;
 
 };

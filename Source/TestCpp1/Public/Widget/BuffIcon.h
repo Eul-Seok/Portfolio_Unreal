@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "BuffIcon.generated.h"
 
+class ASkill_Buff;
+
 UCLASS()
 class TESTCPP1_API UBuffIcon : public UUserWidget
 {
@@ -31,7 +33,7 @@ protected:
 	void CallClearBuffIcon();
 
 public:
-	void F_SetBuffSkillInfo(class ASkill_Buff* BuffSkill);
+	void F_SetBuffSkillInfo(ASkill_Buff* BuffSkill);
 
 };
 

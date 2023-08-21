@@ -6,6 +6,9 @@
 #include "Blueprint/UserWidget.h"
 #include "BuffPanel.generated.h"
 
+class UBuffIcon;
+class ASkill_Buff;
+
 UCLASS()
 class TESTCPP1_API UBuffPanel : public UUserWidget
 {
@@ -24,9 +27,9 @@ protected:
 protected:
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY()
-	TSubclassOf<class UBuffIcon> W_BuffIcon;
+	TSubclassOf<UBuffIcon> W_BuffIcon;
 
 public:
-	void F_AddBuff(class ASkill_Buff* BuffSkill);
+	void F_AddBuff(ASkill_Buff* BuffSkill);
 	void F_ClearPanel();
 };

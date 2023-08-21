@@ -9,6 +9,11 @@
 
 DECLARE_MULTICAST_DELEGATE(FDele_Multi);
 
+class UQuestObjectiveItem;
+class UQuestLogEntry;
+class URewardSlot;
+class AQuest;
+
 UCLASS()
 class TESTCPP1_API UQuestWindow : public UUserWidget
 {
@@ -41,11 +46,11 @@ public:
 
 protected:
 	UPROPERTY()
-	TSubclassOf<class UQuestObjectiveItem> W_QuestObjectiveItem;
+	TSubclassOf<UQuestObjectiveItem> W_QuestObjectiveItem;
 	UPROPERTY()
-	TSubclassOf<class UQuestLogEntry> W_QuestLogEntry;
+	TSubclassOf<UQuestLogEntry> W_QuestLogEntry;
 	UPROPERTY()
-	TSubclassOf<class URewardSlot> W_RewardSlot;
+	TSubclassOf<URewardSlot> W_RewardSlot;
 	class AGameMgr* m_pGameMgr;
 	class UQuestLog* m_QuestLog;
 
@@ -55,7 +60,7 @@ protected:
 	
 protected:
 	void ClearQuestList();
-	void UpdateRewardBox(class AQuest* Quest);
+	void UpdateRewardBox(AQuest* Quest);
 	URewardSlot* CreateRewardItemSlot(FItemData* ItemData);
 
 public:

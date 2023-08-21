@@ -37,7 +37,7 @@ void UUnequipOneHandWeapon::MinusWeaponDamage(ATestCpp1Character* Player)
 	PlayerStatusComponent->DELE_RequestUpdatePower.ExecuteIfBound();
 }
 
-void UUnequipOneHandWeapon::UpdateApplyBuff(ATestCpp1Character* Player)
+void UUnequipOneHandWeapon::UpdateApplyBuff(const ATestCpp1Character* Player)
 {
 	TArray<AActor*> arAttachedActor{};
 	Player->GetAttachedActors(arAttachedActor);

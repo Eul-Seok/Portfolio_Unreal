@@ -6,6 +6,8 @@
 #include "Animation/AnimNotifies/AnimNotify.h"
 #include "EquipOneHandWeapon.generated.h"
 
+class ATestCpp1Character;
+
 UCLASS()
 class TESTCPP1_API UEquipOneHandWeapon : public UAnimNotify
 {
@@ -17,5 +19,5 @@ public:
 protected:
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 	void AddWeaponDamage(ATestCpp1Character* Player);
-	void UpdateApplyBuff(ATestCpp1Character* Player);
+	void UpdateApplyBuff(const ATestCpp1Character* Player);
 };

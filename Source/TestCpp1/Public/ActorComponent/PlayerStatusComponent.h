@@ -70,7 +70,7 @@ protected:
 	void Init();
 	void LevelUp();
 	void LevelUpReward();
-	void UpdateApplyBuff(ATestCpp1Character* Player);
+	void UpdateApplyBuff(const ATestCpp1Character* Player);
 
 public:
 	void F_CompleteRecovery();

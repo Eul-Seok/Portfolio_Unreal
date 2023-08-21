@@ -8,6 +8,8 @@
 
 DECLARE_MULTICAST_DELEGATE(FDele_Multi);
 
+class UWidget;
+
 UENUM(BlueprintType)
 enum class EUIType : uint8
 {
@@ -112,7 +114,7 @@ protected:
 	void ToggleStatusWindow();
 	void ToggleQuestWindow();
 	void ToggleQuestContent();
-	void AddCanvasPanelUI(class UWidget* Widget);
+	void AddCanvasPanelUI(UWidget* Widget);
 	void CloseQuestWindow();
 	void CloseQuestContent();
 

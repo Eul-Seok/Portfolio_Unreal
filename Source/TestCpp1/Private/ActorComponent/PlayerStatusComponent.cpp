@@ -108,7 +108,7 @@ void UPlayerStatusComponent::LevelUpReward()
 	DELE_LevelUp.Broadcast();
 }
 
-void UPlayerStatusComponent::UpdateApplyBuff(ATestCpp1Character* Player)
+void UPlayerStatusComponent::UpdateApplyBuff(const ATestCpp1Character* Player)
 {
 	TArray<AActor*> arAttachedActor{};
 	Player->GetAttachedActors(arAttachedActor);

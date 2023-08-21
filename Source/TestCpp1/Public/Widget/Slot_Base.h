@@ -8,6 +8,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Slot_Base.generated.h"
 
+class UDragIcon;
+
 UCLASS()
 class TESTCPP1_API USlot_Base : public UUserWidget
 {
@@ -35,7 +37,7 @@ protected:
 	class ATestCpp1Character* m_Player;
 	class APlayerController* m_PlayerController;
 	UPROPERTY()
-	TSubclassOf<class UDragIcon> W_DragIcon;
+	TSubclassOf<UDragIcon> W_DragIcon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class USoundBase* m_SoundMouseEnter;

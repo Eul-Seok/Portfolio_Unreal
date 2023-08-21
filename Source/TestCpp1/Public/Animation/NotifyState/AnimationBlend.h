@@ -6,9 +6,6 @@
 #include "Animation/AnimNotifies/AnimNotifyState.h"
 #include "AnimationBlend.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class TESTCPP1_API UAnimationBlend : public UAnimNotifyState
 {

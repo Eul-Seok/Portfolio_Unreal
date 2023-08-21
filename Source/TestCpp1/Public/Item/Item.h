@@ -5,6 +5,8 @@
 #include "Item/ItemData.h"
 #include "Item.generated.h"
 
+class ATestCpp1Character;
+
 UCLASS()
 class TESTCPP1_API AItem : public AActor
 {
@@ -33,7 +35,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	bool F_ItemGet(class ATestCpp1Character* Character);
+	bool F_ItemGet(ATestCpp1Character* Character);
 	void F_DestroyPickUpRange();
 	UStaticMeshComponent* GetStaticMeshComponent();
 

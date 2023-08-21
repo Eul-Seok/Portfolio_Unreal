@@ -15,6 +15,8 @@ enum class ELocationMarkerType : uint8
 	E_QuestTypeMax					UMETA(DisplayName = LocationMarkerTypeMax)
 };
 
+class AItem;
+
 UCLASS()
 class TESTCPP1_API ALocationMarker : public AActor
 {
@@ -37,7 +39,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ELocationMarkerType m_eLocationMarkerType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AItem> m_CheckItem;
+	TSubclassOf<AItem> m_CheckItem;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class AMonsterSpawner* m_pMonsterSpawner;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite)

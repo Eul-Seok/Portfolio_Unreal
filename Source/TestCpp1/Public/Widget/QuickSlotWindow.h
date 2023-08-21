@@ -8,6 +8,9 @@
 
 DECLARE_MULTICAST_DELEGATE_TwoParams(FDele_Multi_TwoParams, uint8, EQuickSlotNumber);
 
+class UQuickSlot;
+class USlot_Base;
+
 UCLASS()
 class TESTCPP1_API UQuickSlotWindow : public UUserWidget
 {
@@ -23,9 +26,9 @@ protected:
 protected:
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY()
-	TArray<class UQuickSlot*> m_arQuickSlot;
+	TArray<UQuickSlot*> m_arQuickSlot;
 	UPROPERTY()
-	TSubclassOf<class USlot_Base> W_QuickSlot;
+	TSubclassOf<USlot_Base> W_QuickSlot;
 
 protected:
 	virtual void NativeOnInitialized() override;

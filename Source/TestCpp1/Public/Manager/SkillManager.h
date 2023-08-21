@@ -8,6 +8,7 @@
 #include "Skill/SkillData.h"
 #include "SkillManager.generated.h"
 
+class USkillSlot;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TESTCPP1_API USkillManager : public UActorComponent
@@ -42,7 +43,7 @@ protected:
 	uint8 m_nCommonSkillSlotIndex;
 	
 protected:
-	bool SpawnSkill(uint8 Index, FSkillData* SkillData, ACharacter* pTarget = nullptr);
+	bool SpawnSkill(uint8 Index, const FSkillData* SkillData, ACharacter* pTarget = nullptr);
 
 public:
 	void F_Init(uint8 nSkillWindowRow, uint8 nSkillWindowColumn);
@@ -57,6 +58,6 @@ public:
 	uint8 F_GetColumnCount();
 	uint8 F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber);
 	EQuickSlotNumber F_GetQuickSlotMapValue(uint8 SkillWindowIndex);
-	TArray<class USkillSlot*>* F_GetSkillSlotArray();
+	TArray<USkillSlot*>* F_GetSkillSlotArray();
 	uint8 F_GetSpawnSkillLevel();
 };

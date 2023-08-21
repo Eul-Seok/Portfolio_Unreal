@@ -135,7 +135,7 @@ void AMonster::CheckQuestMonster()
 	}
 }
 
-void AMonster::MonsterDie(FVector* vHitImactVector)
+void AMonster::MonsterDie(const FVector* pHitImactVector)
 {
 	CallHiddenTargetBarMini();
 	AMonsterAIController* AIController = Cast<AMonsterAIController>(GetController());
@@ -161,7 +161,7 @@ void AMonster::MonsterDie(FVector* vHitImactVector)
 	}
 	else
 	{
-		Ragdoll(*vHitImactVector);
+		Ragdoll(pHitImactVector);
 	}
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	HitBoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -189,11 +189,11 @@ void AMonster::MonsterDestroy()
 	Destroy();
 }
 
-void AMonster::Ragdoll(FVector ImpactVector)
+void AMonster::Ragdoll(const FVector* pHitImactVector)
 {
 	GetMesh()->SetAllBodiesSimulatePhysics(true);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-	GetMesh()->AddForce(ImpactVector * 7000, NAME_None, true);
+	GetMesh()->AddForce(*pHitImactVector * 7000, NAME_None, true);
 }
 
 AGameMgr* AMonster::F_GetGameMgr()
@@ -218,28 +218,28 @@ void AMonster::F_Attack()
 	AnimInstance->Montage_SetEndDelegate(DELE_MontageEnd, m_arAnimDefaultAttack[nRandomIndex]);
 }
 
-void AMonster::F_Hit(UPrimitiveComponent* OverlappedComp)
+void AMonster::F_Hit(const UPrimitiveComponent* pOverlappedComp)
 {
 	float fDamage{};
 	FVector ImpactPoint{};
 	UParticleSystem* PlayerAttackImpact = m_Player->F_GetAttackImpact();
 	m_TargetActorLocation = m_Player->GetActorLocation();
-	OverlappedComp->GetClosestPointOnCollision(HitBoxCollision->GetComponentLocation(), ImpactPoint);
-	fDamage = CalculateHitDamage(OverlappedComp);
+	pOverlappedComp->GetClosestPointOnCollision(HitBoxCollision->GetComponentLocation(), ImpactPoint);
+	fDamage = CalculateHitDamage(pOverlappedComp);
 	F_ApplyHitDamage(fDamage, &ImpactPoint);
 
 	if (PlayerAttackImpact != nullptr)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), PlayerAttackImpact, ImpactPoint);
 	}
-	USoundBase* WeaponHitSound = Cast<AWeapon_Base>(OverlappedComp->GetOwner())->F_GetSoundMonsterHit();
+	USoundBase* WeaponHitSound = Cast<AWeapon_Base>(pOverlappedComp->GetOwner())->F_GetSoundMonsterHit();
 	if (WeaponHitSound)
 	{
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponHitSound, ImpactPoint);
 	}
 }
 
-void AMonster::F_ApplyHitDamage(float fDamage, FVector* vImactPoint)
+void AMonster::F_ApplyHitDamage(float fDamage, const FVector* pImactPointVector)
 {
 	AMonsterAIController* AIController = Cast<AMonsterAIController>(GetController());
 	if (AIController->GetBlackboardComponent()->GetValueAsEnum(AMonsterAIController::Key_MosterState) == (uint8)EMonsterState::E_Patrol)
@@ -248,7 +248,7 @@ void AMonster::F_ApplyHitDamage(float fDamage, FVector* vImactPoint)
 		AIController->GetBlackboardComponent()->SetValueAsObject(AMonsterAIController::Key_Player, m_Player);
 		AIController->GetBlackboardComponent()->SetValueAsEnum(AMonsterAIController::Key_MosterState, (uint8)EMonsterState::E_Chase);
 	}
-	FVector HitImpactVector = GetActorLocation() - *vImactPoint;
+	FVector HitImpactVector = GetActorLocation() - *pImactPointVector;
 	DisplayTargetHealthBarMini();
 	RenderCustomDepthOn();
 	MonsterStatusComponent->F_ReduceHealth(fDamage);
@@ -289,9 +289,9 @@ void AMonster::FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool b
 	DELE_AttackEnd.Broadcast();
 }
 
-float AMonster::CalculateHitDamage(UPrimitiveComponent* OverlappedComp)
+float AMonster::CalculateHitDamage(const UPrimitiveComponent* pOverlappedComp)
 {
-	UPlayerStatusComponent* PlayerStatusComponent = Cast<ATestCpp1Character>(OverlappedComp->GetAttachmentRootActor())->F_GetPlayerStatusComponent();
+	UPlayerStatusComponent* PlayerStatusComponent = Cast<ATestCpp1Character>(pOverlappedComp->GetAttachmentRootActor())->F_GetPlayerStatusComponent();
 	float PlayerStrikingPower = PlayerStatusComponent->F_GetStrikingPower();
 	float PlayerBuffAppliedPower = PlayerStatusComponent->F_GetBuffAppliedStrikingPower();
 	float PlayerAttackStrikingPower = PlayerStatusComponent->F_GetAttackStrikingPower();

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotifyState.h"
+#include "Animation/AttackData.h"
 #include "Interface/Interface_Affect.h"
 #include "Affect/AffectType.h"
 #include "AttackSetting.generated.h"
@@ -17,7 +18,7 @@ public:
 	virtual void NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration) override;
 	virtual void NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 	float CalculatefFinalAffectValue(float AffectValue, uint8 SkillLevel);
-	void GetInterfaceAffect(AActor* Pawn);
+	void GetInterfaceAffect(const AActor* Pawn);
 	void ApplyAffect(AActor* Pawn, EOperatorType Operator);
 	void ResetAffect(AActor* Pawn);
 	void SetAttackAvailable(AActor* Pawn, bool IsAttackAvailable);

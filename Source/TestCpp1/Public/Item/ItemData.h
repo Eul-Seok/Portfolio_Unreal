@@ -8,6 +8,8 @@
 #include "Affect/AffectType.h"
 #include "ItemData.generated.h"
 
+class AItem;
+
 USTRUCT(BlueprintType)
 struct FItemData : public FTableRowBase
 {
@@ -21,7 +23,7 @@ public:
 	EItemType m_ItemType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AItem> m_ItemClass;
+	TSubclassOf<AItem> m_ItemClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName m_ItemName;

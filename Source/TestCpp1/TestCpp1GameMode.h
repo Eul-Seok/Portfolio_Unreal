@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "TestCpp1GameMode.generated.h"
 
+class UMainMenu;
+
 UCLASS(minimalapi)
 class ATestCpp1GameMode : public AGameModeBase
 {
@@ -18,7 +20,7 @@ protected:
 
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
-    TSubclassOf<class UMainMenu> W_StartingMainMenuWidgetClass;
+    TSubclassOf<UMainMenu> W_StartingMainMenuWidgetClass;
 };
 
 

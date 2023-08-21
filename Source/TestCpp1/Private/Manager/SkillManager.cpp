@@ -20,7 +20,7 @@ USkillManager::USkillManager():
 {
 }
 
-bool USkillManager::SpawnSkill(uint8 Index, FSkillData* SkillData, ACharacter* pTarget)
+bool USkillManager::SpawnSkill(uint8 Index, const FSkillData* SkillData, ACharacter* pTarget)
 {
 	ASkill_Base* pSpawnSkill{};
 	UWorld* world = GetWorld();

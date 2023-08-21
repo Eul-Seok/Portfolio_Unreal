@@ -10,7 +10,7 @@ UQuestObjectiveItem::UQuestObjectiveItem(const FObjectInitializer& ObjectInitial
 {
 }
 
-void UQuestObjectiveItem::F_SetQuestObjectiveInfo(FQuestObjectiveData* pObjectiveData)
+void UQuestObjectiveItem::F_UpdateQuestObjectiveInfo(const FQuestObjectiveData* pObjectiveData)
 {
 	Text_Description->SetText(pObjectiveData->m_Description);
 	if (pObjectiveData->m_bComplete)

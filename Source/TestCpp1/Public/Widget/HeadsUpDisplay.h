@@ -7,6 +7,8 @@
 #include "Widget/InteractionAlert.h"
 #include "HeadsUpDisplay.generated.h"
 
+class ASkill_Base;
+
 UCLASS()
 class TESTCPP1_API UHeadsUpDisplay : public UUserWidget
 {
@@ -53,7 +55,7 @@ protected:
 	void HiddenTextAlert();
 
 public:
-	class UCastBar* F_DisplayCastBar(class ASkill_Base* SkilltoCast);
+	class UCastBar* F_DisplayCastBar(ASkill_Base* SkilltoCast);
 	void F_DisplayInteractionAlert(bool bDisplay, EInteractionAlertType InteractionAlertType);
 	void F_DisplayConfirmWindow(bool bDisplay);
 	void F_DisplayTextAlert(FText* Text);
