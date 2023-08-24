@@ -234,16 +234,6 @@ void USkillSlot::F_BindCooldownTimer(ASkill_Base* Skill)
 	Skill->DELE_CastInterrupted.BindUFunction(this, FName("F_CallCastInterrupted"));
 }
 
-bool USkillSlot::F_GetbPurchased()
-{
-	return m_bPurchased;
-}
-
-FTimerHandle* USkillSlot::F_GetCooldownTimerHandle()
-{
-	return &m_CooldownTimerHandle;
-}
-
 void USkillSlot::F_SetSkillWindowIndex(uint8 Index)
 {
 	m_nSkillWindowIndex = Index;
@@ -253,9 +243,4 @@ void USkillSlot::F_SetSkillData(FSkillData* SkillData)
 {
 	m_pSkillData = SkillData;
 	m_SkillToolTip->F_SetSkillData(m_pSkillData);
-}
-
-FSkillData* USkillSlot::F_GetSkillData()
-{
-	return m_pSkillData;
 }

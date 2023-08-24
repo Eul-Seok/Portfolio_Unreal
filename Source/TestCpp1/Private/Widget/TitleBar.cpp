@@ -61,11 +61,6 @@ void UTitleBar::UpdateWindowLocationStop()
 	GetWorld()->GetTimerManager().ClearTimer(m_UpdateTimerHandle);
 }
 
-UTextBlock* UTitleBar::F_GetTitleTextBlock()
-{
-	return Title;
-}
-
 void UTitleBar::OnBorderMouserDown()
 {
 	FVector2D MousePosition = UWidgetLayoutLibrary::GetMousePositionOnViewport(GetWorld());

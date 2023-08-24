@@ -37,5 +37,5 @@ private:
 	void CreateInventorySlot(uint8 Row, uint8 Column);
 
 public:
-	TArray<UInventorySlot*>* F_GetarInventorySlot();
+	FORCEINLINE TArray<UInventorySlot*>* F_GetarInventorySlot() { return &m_arInventorySlot; }
 };

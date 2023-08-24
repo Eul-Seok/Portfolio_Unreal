@@ -27,5 +27,5 @@ protected:
 public:
 	bool F_AddSkill(FName SkillName);
 	bool F_QuerySkill(FName SkillName, uint8& nSkillLevel);
-	TArray<TSubclassOf<ASkill_Base>>* F_GetPlayerSkillList();
+	FORCEINLINE TArray<TSubclassOf<ASkill_Base>>* F_GetPlayerSkillList() { return &m_arPlayerSkillList; }
 };

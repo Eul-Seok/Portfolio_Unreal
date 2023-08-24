@@ -39,7 +39,8 @@ protected:
 	void UpdateWindowLocationStop();
 
 public:
-	UTextBlock* F_GetTitleTextBlock();
+	FORCEINLINE UTextBlock* F_GetTitleTextBlock() { return Title; }
+
 public:
 	UFUNCTION()
 	void OnBorderMouserDown();

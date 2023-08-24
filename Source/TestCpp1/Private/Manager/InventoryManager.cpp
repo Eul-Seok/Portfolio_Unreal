@@ -56,7 +56,6 @@ bool UInventoryManager::F_ItemAdd(FName* ItemRowName)
 	return bSucess;
 }
 
-
 void UInventoryManager::F_ItemSwap(uint8 Dst, uint8 Src)
 {
 	EQuickSlotNumber DstQuickSlotNumber{};
@@ -77,53 +76,17 @@ void UInventoryManager::F_ItemSwap(uint8 Dst, uint8 Src)
 	(*F_GetInventorySlotArray())[Src]->F_UpdateInventorySlotIcon();
 }
 
-bool UInventoryManager::F_GetIsEnableItem(uint8 Index)
-{
-	return (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_IsEnable;
-}
-
 void UInventoryManager::F_SetQuickSlotMap(uint8 InventoryIndex, EQuickSlotNumber QuickSlotNumber)
 {
 	m_QuickSlotMap.Emplace(InventoryIndex, QuickSlotNumber);
 }
 
-UDataTable* UInventoryManager::F_GetItemDataTable()
-{
-	return m_pItemDataTable;
-}
-
-FItemData* UInventoryManager::F_GetItemDataDefault()
-{
-	return m_pItemDataDefault;
-}
-
-
-uint8 UInventoryManager::F_GetLength()
-{
-	return m_nLength;
-}
-
-uint8 UInventoryManager::F_GetRowCount()
-{
-	return m_nItemRowCount;
-}
-
-uint8 UInventoryManager::F_GetColumnCount()
-{
-	return m_nItemColumnCount;
-}
-
-uint8 UInventoryManager::F_GetQuickSlotMapKey(EQuickSlotNumber QuickSlotNumber)
-{
-	return *m_QuickSlotMap.FindKey(QuickSlotNumber);
-}
-
-EQuickSlotNumber UInventoryManager::F_GetQuickSlotMapValue(uint8 InventoryIndex)
-{
-	return m_QuickSlotMap[InventoryIndex];
-}
-
-TArray<UInventorySlot*>* UInventoryManager::F_GetInventorySlotArray()
+TArray<class UInventorySlot*>* UInventoryManager::F_GetInventorySlotArray()
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetInventory()->F_GetarInventorySlot();
+}
+
+bool UInventoryManager::F_GetIsEnableItem(uint8 Index)
+{
+	return (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_IsEnable;
 }

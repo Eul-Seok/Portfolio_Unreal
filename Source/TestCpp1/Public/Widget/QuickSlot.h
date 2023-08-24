@@ -59,7 +59,7 @@ public:
 	void F_SetQuickSlotData(S_QUICKSLOTDATA* pQuickSlotData);
 	
 public:
-	EQuickSlotNumber F_GetQuickSlotNumber();
-	uint8 F_GetQuickSlotIndex();
-	S_QUICKSLOTDATA* F_GetQuickSlotData();
+	FORCEINLINE EQuickSlotNumber F_GetQuickSlotNumber() { return m_eQuickSlotNumber; }
+	FORCEINLINE uint8 F_GetQuickSlotIndex() { return m_nQuickSlotIndex; }
+	FORCEINLINE S_QUICKSLOTDATA* F_GetQuickSlotData() { return &m_sQuickSlotData; }
 };

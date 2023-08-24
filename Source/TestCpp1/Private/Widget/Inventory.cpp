@@ -51,8 +51,3 @@ void UInventory::CreateInventorySlot(uint8 Row, uint8 Column)
 	m_arInventorySlot.Emplace(pNewInventorySlot);
 }
 
-TArray<UInventorySlot*>* UInventory::F_GetarInventorySlot()
-{
-	return &m_arInventorySlot;
-}
-

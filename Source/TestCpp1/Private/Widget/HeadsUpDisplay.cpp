@@ -103,39 +103,3 @@ void UHeadsUpDisplay::F_DisplayTextAlert(FText* Text)
 	Text_Alert->SetText(*Text);
 	GetWorld()->GetTimerManager().SetTimer(m_TextAlertTimer, this, &UHeadsUpDisplay::HiddenTextAlert, 3.0f, false);
 }
-
-UCanvasPanel* UHeadsUpDisplay::F_GetWindowPanel()
-{
-	return WindowPanel;
-}
-
-UTargetBar* UHeadsUpDisplay::F_GetTargetBar()
-{
-	return W_TargetBar;
-}
-
-UCanvasPanel* UHeadsUpDisplay::F_GetCanvasPanelUI()
-{
-	return CanvasPanel_UI;
-}
-
-UConfirmWindow* UHeadsUpDisplay::F_GetConfirmWindow()
-{
-	return W_ConfirmWindow;
-}
-
-UQuestObjectives* UHeadsUpDisplay::F_GetQuestObjectives()
-{
-	return W_QuestObjectives;
-}
-
-UBuffPanel* UHeadsUpDisplay::F_GetBuffPanel()
-{
-	return W_BuffPanel;
-}
-
-UGameEndMenu* UHeadsUpDisplay::F_GetGameEndMenu()
-{
-	return W_GameEndMenu;
-}
-

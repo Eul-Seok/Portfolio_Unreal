@@ -38,8 +38,3 @@ void UConfirmWindow::F_SetInventoryIndex(uint8 InventoryIndex)
 	m_nInventoryIndex = InventoryIndex;
 }
 
-uint8 UConfirmWindow::F_GetInventoryIndex()
-{
-	return m_nInventoryIndex;
-}
-

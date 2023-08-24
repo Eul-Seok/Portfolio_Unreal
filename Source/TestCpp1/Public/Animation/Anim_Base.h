@@ -61,5 +61,5 @@ public:
 	void F_CallToggleTargetingMode();
 	UFUNCTION()
 	void F_SetIsBlend(bool bBlend);
-	float F_GetDirection();
+	FORCEINLINE float F_GetDirection() { return Direction; }
 };

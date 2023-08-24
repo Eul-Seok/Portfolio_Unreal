@@ -55,10 +55,10 @@ public:
 	void F_SetTarget(ACharacter* Target);
 
 public:
-	FName* F_GetSkillRowName();
-	float F_GetCastTime();
-	UDataTable* F_GetSkillDataTable();
-	FSkillData* F_GetSkillData();
+	FORCEINLINE FName* F_GetSkillRowName() { return &m_SkillRowName; }
+	FORCEINLINE float F_GetCastTime() { return m_SkillData->m_CastTime; }
+	FORCEINLINE UDataTable* F_GetSkillDataTable() { return m_pSkillDataTable; }
+	FORCEINLINE FSkillData* F_GetSkillData() { return m_SkillData; }
 
 public:
 	FDele_Single DELE_CastSuccess;

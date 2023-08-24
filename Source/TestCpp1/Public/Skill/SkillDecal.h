@@ -25,8 +25,7 @@ protected:
 	class USphereComponent* SkillRage;
 
 public:	
-	USceneComponent* F_GetRootScene();
-	USphereComponent* F_GetOverlapSphere();
-	USphereComponent* F_GetSkillRage();
-
+	FORCEINLINE USceneComponent* F_GetRootScene() { return RootScene; }
+	FORCEINLINE USphereComponent* F_GetOverlapSphere() { return OverlapSphere; }
+	FORCEINLINE USphereComponent* F_GetSkillRage() { return SkillRage; }
 };

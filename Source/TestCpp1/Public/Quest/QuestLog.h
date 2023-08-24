@@ -28,6 +28,6 @@ public:
 	void F_SetActiveQuest(AQuest* Quest);
 
 public:
-	TArray<AQuest*>* F_GetarQuest();
-	AQuest* F_GetActiveQuest();
+	FORCEINLINE TArray<AQuest*>* F_GetarQuest() { return &m_arQuest; }
+	FORCEINLINE AQuest* F_GetActiveQuest() { return m_ActiveQuest; }
 };

@@ -389,52 +389,6 @@ void AMonster::DisplayDamageIndicator(float fDamage)
 	}
 }
 
-
-FText* AMonster::F_GetMonsterName()
-{
-	return &m_MonsterName;
-}
-
-UMonsterStatusComponent* AMonster::F_GetMonsterStatusComponent()
-{
-	return MonsterStatusComponent;
-}
-
-UMonsterSkillsComponent* AMonster::F_GetMonsterSkillsComponent()
-{
-	return MonsterSkillsComponent;
-}
-
-USceneComponent* AMonster::F_GetSceneStoneObject()
-{
-	return Scene_StoneObject;
-}
-
-AWeapon_Base* AMonster::F_GetLeftWeapon()
-{
-	return m_LeftWeapon;
-}
-
-AWeapon_Base* AMonster::F_GetRightWeapon()
-{
-	return m_RightWeapon;
-}
-
-float AMonster::F_GetPatrolSpeed()
-{
-	return m_PatrolSpeed;
-}
-
-float AMonster::F_GetChaseSpeed()
-{
-	return m_ChaseSpeed;
-}
-
-UParticleSystem* AMonster::F_GetAttackImpact()
-{
-	return m_AttackImpact;
-}
-
 void AMonster::F_SetSpawner(AMonsterSpawner* Spawner)
 {
 	m_Spawner = Spawner;

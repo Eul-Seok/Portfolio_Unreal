@@ -44,7 +44,7 @@ public:
 	void F_DisplayTargetHealthBar(bool bDisplay);
 
 public:
-	UTextBlock* F_GetTargetNameText();
-	UProgressBar* F_GetTargetHealthBar();
+	FORCEINLINE UTextBlock* F_GetTargetNameText() { return TargetNameText; }
+	FORCEINLINE UProgressBar* F_GetTargetHealthBar() { return TargetHealthBar; }
 
 };

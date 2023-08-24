@@ -8,7 +8,6 @@
 #include "AffectManager.generated.h"
 
 class UAffect_Base;
-
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TESTCPP1_API UAffectManager : public UActorComponent
 {
@@ -25,5 +24,5 @@ protected:
 
 public:
 	void F_Init();
-	UAffect_base* F_GetAffect(EAffectType);
+	FORCEINLINE UAffect_base* F_GetAffect(EAffectType eAffect) { return m_arAffect[(uint8)eAffect]; }
 };

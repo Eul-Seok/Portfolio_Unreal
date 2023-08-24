@@ -7,8 +7,3 @@ UMonsterSkillsComponent::UMonsterSkillsComponent():
 {
 	PrimaryComponentTick.bCanEverTick = false;
 }
-
-TArray<TSubclassOf<AMonsterSkill_Base>>* UMonsterSkillsComponent::F_GetMonsterSkillList()
-{
-	return &m_MonsterSKillList;
-}

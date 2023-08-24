@@ -99,15 +99,15 @@ public:
 	void F_SetStatusPoint(uint8 nNewStatusPoint);
 
 public:
-	float F_GetExpMax();
-	float F_GetExpCurrent();
-	float F_GetExpNormalized();
-	uint8 F_GetStrength();
-	uint8 F_GetAgility();
-	uint8 F_GetConstitution();
-	uint8 F_GetIntelligence();
-	uint8 F_GetSkillPoint();
-	uint8 F_GetStatusPoint();
+	FORCEINLINE float F_GetExpMax() { return m_fExpMax; }
+	FORCEINLINE float F_GetExpCurrent() { return m_fExpCurrent; }
+	FORCEINLINE float F_GetExpNormalized() { return m_fExpNormalized; }
+	FORCEINLINE uint8 F_GetStrength() { return m_nStrength; }
+	FORCEINLINE uint8 F_GetAgility() { return m_nAgility; }
+	FORCEINLINE uint8 F_GetConstitution(){ return m_nConstitution; }
+	FORCEINLINE uint8 F_GetIntelligence() { return m_nIntelligence; }
+	FORCEINLINE uint8 F_GetSkillPoint() { return m_nSkillPoint; }
+	FORCEINLINE uint8 F_GetStatusPoint() { return m_nStatusPoint; }
 
 public:
 	FDele_Multi DELE_RequestUpdateStatusBar;

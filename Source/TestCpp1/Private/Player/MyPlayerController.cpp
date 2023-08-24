@@ -297,9 +297,9 @@ void AMyPlayerController::TargetingShift()
 		{
 			m_nTargetingIndex = 0;
 		}
-		m_CurrentTarget->F_CallClearTargetIndicator();
-		m_CurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
-		m_CurrentTarget->F_SetTarget();
+		m_pCurrentTarget->F_CallClearTargetIndicator();
+		m_pCurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
+		m_pCurrentTarget->F_SetTarget();
 		DELE_TargetChange.Broadcast();
 	}
 	else
@@ -319,8 +319,8 @@ void AMyPlayerController::F_ToggleTargetingMode()
 		{
 			m_Player->F_TargetingModeOn();
 			m_bTargetingMode = true;
-			m_CurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
-			m_CurrentTarget->F_SetTarget();
+			m_pCurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
+			m_pCurrentTarget->F_SetTarget();
 			DELE_TargetChange.Broadcast();
 			DELE_ToggleTargetingMode.ExecuteIfBound();
 		}
@@ -340,7 +340,7 @@ void AMyPlayerController::F_TargetClear()
 {
 	m_Player->F_TargetingModeOff();
 	m_bTargetingMode = false;
-	m_CurrentTarget = nullptr;
+	m_pCurrentTarget = nullptr;
 	DELE_ToggleTargetingMode.ExecuteIfBound();
 }
 
@@ -394,21 +394,5 @@ void AMyPlayerController::F_SetIsJumpInput(bool IsFalling)
 
 void AMyPlayerController::F_SetCurrentTarget(AMonster* Monster)
 {
-	m_CurrentTarget = Monster;
+	m_pCurrentTarget = Monster;
 }
-
-AMonster* AMyPlayerController::F_GetCurrentTarget()
-{
-	return m_CurrentTarget;
-}
-
-bool AMyPlayerController::F_GetIsJumpInput()
-{
-	return m_bJumpInput;
-}
-
-bool AMyPlayerController::F_GetIsTargetingMode()
-{
-	return m_bTargetingMode;
-}
-

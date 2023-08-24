@@ -168,20 +168,20 @@ public:
 	void F_SetbPlayingMontage(bool IsPlayingMontage);
 
 public:
-	UPlayerStatusComponent* F_GetPlayerStatusComponent();
-	UPlayerSkillsComponent* F_GetPlayerSkillsComponent();
-	USceneComponent* F_GetSceneWeaponRigth();
-	USceneComponent* F_GetSceneUnequipSword();
-	TSet<AItem*>* F_GetOverLapItem();
-	TSet<AMonster*>* F_GetOverLapMonster();
-	AWeapon_Base* F_GetRightHandWeapon();
-	AWeapon_Base* F_GetWeapon();
-	AGameMgr* F_GetGameMgr();	
-	bool F_GetbCasting();
-	bool F_GetbPlayingMontage();
-	UParticleSystem* F_GetAttackImpact();
-	ANPC* F_GetOverlapNPC();
-	ESkillWeaponType F_GetCurrentSkillWeaponType();
+	FORCEINLINE UPlayerStatusComponent* F_GetPlayerStatusComponent() { return PlayerStatusComponent; }
+	FORCEINLINE UPlayerSkillsComponent* F_GetPlayerSkillsComponent() { return PlayerSkillsComponent; }
+	FORCEINLINE USceneComponent* F_GetSceneWeaponRigth() { return Scene_WeaponRight; }
+	FORCEINLINE USceneComponent* F_GetSceneUnequipSword() { return Scene_UnequipSword; }
+	FORCEINLINE TSet<AItem*>* F_GetOverLapItem() { return &m_setOverlapItem; }
+	FORCEINLINE TSet<AMonster*>* F_GetOverLapMonster() { return &m_setOverlapMonster; }
+	FORCEINLINE AWeapon_Base* F_GetRightHandWeapon() { return m_RightHandWeapon; }
+	FORCEINLINE AWeapon_Base* F_GetWeapon() { return m_Weapon; }
+	FORCEINLINE AGameMgr* F_GetGameMgr() { return m_pGameMgr; }
+	FORCEINLINE bool F_GetbCasting() { return m_bCasting; }
+	FORCEINLINE bool F_GetbPlayingMontage() { return m_bPlayingMontage; }
+	FORCEINLINE UParticleSystem* F_GetAttackImpact() { return m_AttackImpact; }
+	FORCEINLINE ANPC* F_GetOverlapNPC() { return m_pOverlapNPC; }
+	FORCEINLINE ESkillWeaponType F_GetCurrentSkillWeaponType() { return m_CurrentSkillWeaponType; }
 
 protected:
 	UFUNCTION()

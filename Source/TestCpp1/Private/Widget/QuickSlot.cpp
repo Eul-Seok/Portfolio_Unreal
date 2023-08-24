@@ -262,18 +262,3 @@ void UQuickSlot::F_SetQuickSlotData(S_QUICKSLOTDATA* pQuickSlotData)
 {
 	m_sQuickSlotData = *pQuickSlotData;
 }
-
-UQuickSlot::S_QUICKSLOTDATA* UQuickSlot::F_GetQuickSlotData()
-{
-	return &m_sQuickSlotData;
-}
-
-EQuickSlotNumber UQuickSlot::F_GetQuickSlotNumber()
-{
-	return m_eQuickSlotNumber;
-}
-
-uint8 UQuickSlot::F_GetQuickSlotIndex()
-{
-	return m_nQuickSlotIndex;
-}

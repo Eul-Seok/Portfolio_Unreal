@@ -26,7 +26,3 @@ void UAffectManager::F_Init()
 	m_arAffect.EmplaceAt((uint8)EAffectType::E_BuffAppliedDefensivePowerChange, NewObject<UAffect_BuffAppliedDefensivePowerChange>(this, TEXT("BuffAppliedDefensivePowerChange")));
 }
 
-UAffect_base* UAffectManager::F_GetAffect(EAffectType eAffect)
-{
-	return m_arAffect[(uint8)eAffect];
-}

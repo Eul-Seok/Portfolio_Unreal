@@ -52,6 +52,7 @@ private:
 public:
 	UFUNCTION()
 	void F_CallUpdateSkillPoints();
+
 public:
-	TArray<USkillSlot*>* F_GetarSkillSlot();
+	FORCEINLINE TArray<USkillSlot*>* F_GetarSkillSlot() { return &m_arSkillSlot; }
 };

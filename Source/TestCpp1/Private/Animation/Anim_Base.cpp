@@ -84,8 +84,3 @@ void UAnim_Base::F_SetIsBlend(bool bBlend)
 {
 	m_IsBlend = bBlend;
 }
-
-float UAnim_Base::F_GetDirection()
-{
-	return Direction;
-}

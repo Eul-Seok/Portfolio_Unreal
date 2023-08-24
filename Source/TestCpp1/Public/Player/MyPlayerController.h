@@ -25,7 +25,7 @@ protected:
 protected:
 	class ATestCpp1Character* m_Player;
 	class AGameMgr* m_pGameMgr;
-	class AMonster* m_CurrentTarget;
+	class AMonster* m_pCurrentTarget;
 	bool m_bJumpInput;
 	bool m_bTargetingMode;
 	uint8 m_nTargetingIndex;
@@ -81,12 +81,9 @@ public:
 	void F_SetCurrentTarget(AMonster* Monster);
 
 public:
-	UFUNCTION()
-	AMonster* F_GetCurrentTarget();
-	UFUNCTION()
-	bool F_GetIsJumpInput();
-	UFUNCTION()
-	bool F_GetIsTargetingMode();
+	FORCEINLINE AMonster* F_GetCurrentTarget() { return m_pCurrentTarget; }
+	FORCEINLINE bool F_GetIsJumpInput() { return m_bJumpInput; }
+	FORCEINLINE bool F_GetIsTargetingMode() { return m_bTargetingMode; }
 
 public:
 	FDele_Single DELE_ToggleTargetingMode;

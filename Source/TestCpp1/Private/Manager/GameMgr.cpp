@@ -86,38 +86,3 @@ void AGameMgr::F_NPCUpdateTextRenderHasQuest()
 	}
 }
 
-UInventoryManager* AGameMgr::F_GetInventoryMgr()
-{
-	return m_pInventoryMgr;
-}
-
-UItemManager* AGameMgr::F_GetItemMgr()
-{
-	return m_pItemMgr;
-}
-
-UWidgetManager* AGameMgr::F_GetWidgetMgr()
-{
-	return m_pWidgetMgr;
-}
-
-UAffectManager* AGameMgr::F_GetAffectMgr()
-{
-	return m_pAffectMgr;
-}
-
-USkillManager* AGameMgr::F_GetSkillMgr()
-{
-	return m_pSkillMgr;
-}
-
-USoundManager* AGameMgr::F_GetSoundMgr()
-{
-	return m_pSoundMgr;
-}
-
-UQuestLog* AGameMgr::F_GetQuestLogComponent()
-{
-	return m_QuestLogComponent;
-}
-

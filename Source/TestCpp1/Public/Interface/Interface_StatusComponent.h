@@ -35,6 +35,7 @@ public:
 	virtual void F_ResetBuffAppliedStrikingPower() = 0;
 	virtual void F_ResetBuffAppliedDefensivePower() = 0;
 	virtual void F_ClearRegenTimer() = 0;
+
 	virtual float F_GetStrikingPower() = 0;
 	virtual float F_GetDefensivePower() = 0;
 };

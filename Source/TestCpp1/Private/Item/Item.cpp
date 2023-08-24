@@ -51,16 +51,6 @@ void AItem::F_DestroyPickUpRange()
 	PickUpRange->DestroyComponent();
 }
 
-UStaticMeshComponent* AItem::GetStaticMeshComponent()
-{
-	return ItemMesh;
-}
-
-FName* AItem::F_GetRowName()
-{
-	return &m_RowName;
-}
-
 AItem::~AItem()
 {
 }

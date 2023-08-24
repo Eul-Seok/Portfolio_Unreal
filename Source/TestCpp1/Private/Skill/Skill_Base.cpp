@@ -79,23 +79,3 @@ void ASkill_Base::F_SetTarget(ACharacter* Target)
 {
 	m_pTarget = Target;
 }
-
-FName* ASkill_Base::F_GetSkillRowName()
-{
-	return &m_SkillRowName;
-}
-
-float ASkill_Base::F_GetCastTime()
-{
-	return m_SkillData->m_CastTime;
-}
-
-UDataTable* ASkill_Base::F_GetSkillDataTable()
-{
-	return m_pSkillDataTable;
-}
-
-FSkillData* ASkill_Base::F_GetSkillData()
-{
-	return m_SkillData;
-}

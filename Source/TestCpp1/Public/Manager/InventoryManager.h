@@ -36,16 +36,16 @@ public:
 	void F_Init(uint8 InventoryRow, uint8 InventoryColumn);
 	bool F_ItemAdd(FName* ItemName);
 	void F_ItemSwap(uint8 Dst, uint8 Src);
-	bool F_GetIsEnableItem(uint8 Index);
 	void F_SetQuickSlotMap(uint8 InventoryIndex, EQuickSlotNumber QuickSlotNumber);
 
 public:
-	UDataTable* F_GetItemDataTable();
-	FItemData* F_GetItemDataDefault();
-	uint8 F_GetLength();
-	uint8 F_GetRowCount();
-	uint8 F_GetColumnCount();
-	uint8 F_GetQuickSlotMapKey(EQuickSlotNumber QuickSlotNumber);
-	EQuickSlotNumber F_GetQuickSlotMapValue(uint8 InventoryIndex);
+	FORCEINLINE UDataTable* F_GetItemDataTable() { return m_pItemDataTable; }
+	FORCEINLINE FItemData* F_GetItemDataDefault() { return m_pItemDataDefault; }
+	FORCEINLINE uint8 F_GetLength() { return m_nLength; }
+	FORCEINLINE uint8 F_GetRowCount() { return m_nItemRowCount; }
+	FORCEINLINE uint8 F_GetColumnCount() { return m_nItemColumnCount; }
+	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber QuickSlotNumber) { return *m_QuickSlotMap.FindKey(QuickSlotNumber); }
+	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 InventoryIndex) { return m_QuickSlotMap[InventoryIndex]; }
 	TArray<class UInventorySlot*>* F_GetInventorySlotArray();
+	bool F_GetIsEnableItem(uint8 Index);
 };

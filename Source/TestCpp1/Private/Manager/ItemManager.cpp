@@ -113,7 +113,7 @@ void UItemManager::ItemSpawn(uint8 Index)
 	SpawnedItem->GetStaticMeshComponent()->AddForce(ForceVector, "", true);
 }
 
-TArray<UInventorySlot*>* UItemManager::F_GetInventorySlotArray()
+TArray<class UInventorySlot*>* UItemManager::F_GetInventorySlotArray()
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetInventory()->F_GetarInventorySlot();
 }

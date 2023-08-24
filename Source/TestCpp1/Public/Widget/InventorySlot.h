@@ -41,8 +41,12 @@ protected:
 public:
 	void F_CreateToolTip();
 	void F_UpdateInventorySlotIcon();
+
+public:
 	void F_SetInventoryIndex(uint8 Index);
 	void F_SetItemData(FItemData* ItemData);
-	FItemData* F_GetItemData();
-	UItemPopUp* F_GetItemPopUp();
+
+public:
+	FORCEINLINE FItemData* F_GetItemData() { return m_pItemData; }
+	FORCEINLINE UItemPopUp* F_GetItemPopUp() { return m_pItemPopUp; }
 };

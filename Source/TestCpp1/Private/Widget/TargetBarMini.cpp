@@ -75,13 +75,3 @@ void UTargetBarMini::F_DisplayTargetHealthBar(bool bDisplay)
 		TargetHealthBar->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
-
-UTextBlock* UTargetBarMini::F_GetTargetNameText()
-{
-	return TargetNameText;
-}
-
-UProgressBar* UTargetBarMini::F_GetTargetHealthBar()
-{
-	return TargetHealthBar;
-}

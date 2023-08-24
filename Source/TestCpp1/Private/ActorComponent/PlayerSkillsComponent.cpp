@@ -42,8 +42,3 @@ bool UPlayerSkillsComponent::F_QuerySkill(FName SkillName, uint8& nSkillLevel)
 		return false;
 	}
 }
-
-TArray<TSubclassOf<ASkill_Base>>* UPlayerSkillsComponent::F_GetPlayerSkillList()
-{
-	return &m_arPlayerSkillList;
-}

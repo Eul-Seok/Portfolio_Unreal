@@ -19,13 +19,3 @@ void UQuestLog::F_SetActiveQuest(AQuest* Quest)
 {
 	m_ActiveQuest = Quest;
 }
-
-TArray<AQuest*>* UQuestLog::F_GetarQuest()
-{
-	return &m_arQuest;
-}
-
-AQuest* UQuestLog::F_GetActiveQuest()
-{
-	return m_ActiveQuest;
-}

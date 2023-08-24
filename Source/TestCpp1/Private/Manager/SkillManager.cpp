@@ -134,42 +134,7 @@ void USkillManager::F_SetQuickSlotMap(uint8 SkillWindowIndex, EQuickSlotNumber e
 	m_QuickSlotMap.Emplace(SkillWindowIndex, eQuickSlotNumber);
 }
 
-FSkillData* USkillManager::F_GetSkillDataDefault()
-{
-	return m_pSkillDataDefault;
-}
-
-uint8 USkillManager::F_GetLength()
-{
-	return m_nLength;
-}
-
-uint8 USkillManager::F_GetRowCount()
-{
-	return m_nSkillRowCount;
-}
-
-uint8 USkillManager::F_GetColumnCount()
-{
-	return m_nSkillColumnCount;
-}
-
-uint8 USkillManager::F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber)
-{
-	return *m_QuickSlotMap.FindKey(eQuickSlotNumber);
-}
-
-EQuickSlotNumber USkillManager::F_GetQuickSlotMapValue(uint8 SkillWindowIndex)
-{
-	return m_QuickSlotMap[SkillWindowIndex];
-}
-
 TArray<USkillSlot*>* USkillManager::F_GetSkillSlotArray()
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetSkillWindow()->F_GetarSkillSlot();
-}
-
-uint8 USkillManager::F_GetSpawnSkillLevel()
-{
-	return m_nSpawnSkillLevel;
 }

@@ -81,8 +81,3 @@ void USkillWindow::F_CallUpdateSkillPoints()
 		SkillPointsText->SetText(FText::FromString(FString::Printf(TEXT("스킬 포인트: %d"), m_Player->F_GetPlayerStatusComponent()->F_GetSkillPoint())));
 	}
 }
-
-TArray<USkillSlot*>* USkillWindow::F_GetarSkillSlot()
-{
-	return &m_arSkillSlot;
-}

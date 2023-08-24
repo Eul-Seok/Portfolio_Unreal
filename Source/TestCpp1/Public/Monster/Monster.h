@@ -127,18 +127,18 @@ public:
 	void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted);
 
 public:
-	FText* F_GetMonsterName();
-	UMonsterStatusComponent* F_GetMonsterStatusComponent();
-	UMonsterSkillsComponent* F_GetMonsterSkillsComponent();
-	USceneComponent* F_GetSceneStoneObject();
-	AWeapon_Base* F_GetLeftWeapon();
-	AWeapon_Base* F_GetRightWeapon();
-	float F_GetPatrolSpeed();
-	float F_GetChaseSpeed();
-	UParticleSystem* F_GetAttackImpact();
+	void F_SetSpawner(AMonsterSpawner* Spawner);
 
 public:
-	void F_SetSpawner(AMonsterSpawner* Spawner);
+	FORCEINLINE FText* F_GetMonsterName() { return &m_MonsterName; }
+	FORCEINLINE UMonsterStatusComponent* F_GetMonsterStatusComponent() { return MonsterStatusComponent; }
+	FORCEINLINE UMonsterSkillsComponent* F_GetMonsterSkillsComponent() { return MonsterSkillsComponent; }
+	FORCEINLINE USceneComponent* F_GetSceneStoneObject() { return Scene_StoneObject; }
+	FORCEINLINE AWeapon_Base* F_GetLeftWeapon() { return m_LeftWeapon; }
+	FORCEINLINE AWeapon_Base* F_GetRightWeapon() { return m_RightWeapon; }
+	FORCEINLINE float F_GetPatrolSpeed() { return m_PatrolSpeed; }
+	FORCEINLINE float F_GetChaseSpeed() { return m_ChaseSpeed; }
+	FORCEINLINE UParticleSystem* F_GetAttackImpact() { return m_AttackImpact; }
 
 public:
 	FDele_Single DELE_TargetStatusBarUpdate;

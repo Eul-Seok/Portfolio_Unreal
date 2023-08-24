@@ -49,15 +49,17 @@ public:
 	void F_Init(uint8 nSkillWindowRow, uint8 nSkillWindowColumn);
 	bool F_UseSkill(uint8 Index);
 	void F_PlayerSkillsRegistration(uint8 Index);
+
 public:
 	void F_SetQuickSlotMap(uint8 SkillWindowIndex, EQuickSlotNumber eQuickSlotNumber);
 
-	FSkillData* F_GetSkillDataDefault();
-	uint8 F_GetLength();
-	uint8 F_GetRowCount();
-	uint8 F_GetColumnCount();
-	uint8 F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber);
-	EQuickSlotNumber F_GetQuickSlotMapValue(uint8 SkillWindowIndex);
+public:
+	FORCEINLINE FSkillData* F_GetSkillDataDefault() { return m_pSkillDataDefault; }
+	FORCEINLINE uint8 F_GetLength() { return m_nLength; }
+	FORCEINLINE uint8 F_GetRowCount() { return m_nSkillRowCount; }
+	FORCEINLINE uint8 F_GetColumnCount() { return m_nSkillColumnCount; }
+	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber) { return *m_QuickSlotMap.FindKey(eQuickSlotNumber); }
+	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 SkillWindowIndex) { return m_QuickSlotMap[SkillWindowIndex]; }
+	FORCEINLINE uint8 F_GetSpawnSkillLevel() { return m_nSpawnSkillLevel; }
 	TArray<USkillSlot*>* F_GetSkillSlotArray();
-	uint8 F_GetSpawnSkillLevel();
 };

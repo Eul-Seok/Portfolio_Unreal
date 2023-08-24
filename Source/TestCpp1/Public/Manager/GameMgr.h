@@ -47,14 +47,15 @@ protected:
 
 public:
 	void F_NPCUpdateTextRenderHasQuest();
-	UInventoryManager* F_GetInventoryMgr();
-	UItemManager* F_GetItemMgr();
-	UWidgetManager* F_GetWidgetMgr();
-	UAffectManager* F_GetAffectMgr();
-	USkillManager* F_GetSkillMgr();
-	USoundManager* F_GetSoundMgr();
-	
-	UQuestLog* F_GetQuestLogComponent();
+
+public:
+	FORCEINLINE UInventoryManager* F_GetInventoryMgr() { return m_pInventoryMgr; }
+	FORCEINLINE UItemManager* F_GetItemMgr() { return m_pItemMgr; }
+	FORCEINLINE UWidgetManager* F_GetWidgetMgr() { return m_pWidgetMgr; }
+	FORCEINLINE UAffectManager* F_GetAffectMgr() { return m_pAffectMgr; }
+	FORCEINLINE USkillManager* F_GetSkillMgr() { return m_pSkillMgr; }
+	FORCEINLINE USoundManager* F_GetSoundMgr() { return m_pSoundMgr; }
+	FORCEINLINE UQuestLog* F_GetQuestLogComponent() { return m_QuestLogComponent; }
 
 public:
 	FDele_Multi DELE_GameClear;

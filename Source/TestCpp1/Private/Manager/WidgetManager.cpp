@@ -33,7 +33,7 @@
 UWidgetManager::UWidgetManager():
 	W_HUD{}, W_Inventory{}, W_InventorySlot{}, W_QuickSlotWindow{}, W_QuickSlot{}, W_SkillWindow{}, W_SkillSlot{}, W_SkillToolTip{},
 	W_ItemPopUp{}, W_ItemToolTip{}, W_DragIcon{}, W_StatusWindow{},
-	m_PlayerController{}, m_HUD{}, m_Inventory{}, m_SkillWindow{}, m_QuickSlotWindow{}, m_TargetBar{}, m_StatusWindow{},
+	m_PlayerController{}, m_pHUD{}, m_pInventory{}, m_pSkillWindow{}, m_pQuickSlotWindow{}, m_TargetBar{}, m_StatusWindow{},
 	m_bIsOpenedInventory{}, m_bIsOpenedSkillWindow{}, m_bIsOpenedStatusWindow{}
 {
 	static ConstructorHelpers::FClassFinder<UHeadsUpDisplay> W_HeadsUpDisplay(TEXT("/Game/Widgets/W_HUD"));
@@ -166,11 +166,11 @@ void UWidgetManager::ToggleInventory()
 	if (!m_bIsOpenedInventory)
 	{
 		CloseQuestWindow();
-		AddCanvasPanelUI(m_Inventory);
+		AddCanvasPanelUI(m_pInventory);
 	}
 	else
 	{
-		m_CanvasPanelUI->RemoveChild(m_Inventory);
+		m_CanvasPanelUI->RemoveChild(m_pInventory);
 	}
 	m_bIsOpenedInventory = !m_bIsOpenedInventory;
 }
@@ -181,7 +181,7 @@ void UWidgetManager::ToggleSkillWindow()
 	if (!m_bIsOpenedSkillWindow)
 	{
 		CloseQuestWindow();
-		AddCanvasPanelUI(m_SkillWindow);
+		AddCanvasPanelUI(m_pSkillWindow);
 		if (DELE_UpdateSkillSlotIconTint.IsBound())
 		{
 			DELE_UpdateSkillSlotIconTint.Broadcast();
@@ -189,7 +189,7 @@ void UWidgetManager::ToggleSkillWindow()
 	}
 	else
 	{
-		m_CanvasPanelUI->RemoveChild(m_SkillWindow);
+		m_CanvasPanelUI->RemoveChild(m_pSkillWindow);
 	}
 	m_bIsOpenedSkillWindow = !m_bIsOpenedSkillWindow;
 }
@@ -215,7 +215,7 @@ void UWidgetManager::ToggleQuestWindow()
 	if (!m_bIsOpenedQuestWindow)
 	{
 		F_CloseAllUI();
-		AddCanvasPanelUI(m_QuestWindow);
+		AddCanvasPanelUI(m_pQuestWindow);
 	}
 	else
 	{
@@ -229,7 +229,7 @@ void UWidgetManager::ToggleQuestContent()
 	if (!m_bIsOpenedQuestContent)
 	{
 		F_CloseAllUI();
-		AddCanvasPanelUI(m_QuestContent);
+		AddCanvasPanelUI(m_pQuestContent);
 		m_PlayerController->F_InputIgnoreToggle(true);
 	}
 	else
@@ -248,17 +248,17 @@ void UWidgetManager::AddCanvasPanelUI(UWidget* Widget)
 	float AlignmentY{};
 	fAnchorsVertical = 0.5f;
 	AlignmentY = 0.5f;
-	if (Widget == m_StatusWindow|| Widget == m_QuestWindow || Widget == m_QuestContent || Widget == m_PauseMenu)
+	if (Widget == m_StatusWindow|| Widget == m_pQuestWindow || Widget == m_pQuestContent || Widget == m_PauseMenu)
 	{
 		fAnchorsHorizontal = 0.5f;
 		AlignmentX = 0.5f;
 	}
-	else if (Widget == m_SkillWindow)
+	else if (Widget == m_pSkillWindow)
 	{
 		fAnchorsHorizontal = 0.0f;
 		AlignmentX = -0.1f;
 	}
-	else if (Widget == m_Inventory)
+	else if (Widget == m_pInventory)
 	{
 		fAnchorsHorizontal = 1.0f;
 		AlignmentX = 1.1f;
@@ -275,7 +275,7 @@ void UWidgetManager::CloseQuestWindow()
 {
 	if (m_bIsOpenedQuestWindow)
 	{
-		m_QuestWindow->RemoveFromParent();
+		m_pQuestWindow->RemoveFromParent();
 	}
 }
 
@@ -283,7 +283,7 @@ void UWidgetManager::CloseQuestContent()
 {
 	if (m_bIsOpenedQuestContent)
 	{
-		m_QuestContent->RemoveFromParent();
+		m_pQuestContent->RemoveFromParent();
 	}
 }
 
@@ -291,22 +291,22 @@ void UWidgetManager::F_Init()
 {
 	m_pGameMgr = GetWorld() != nullptr ? GetWorld()->GetGameState<AGameMgr>() : nullptr;
 	m_PlayerController = Cast<AMyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
-	m_HUD = CreateWidget<UHeadsUpDisplay>(GetWorld(), W_HUD);
-	m_Inventory = CreateWidget<UInventory>(GetWorld(), W_Inventory);
-	m_QuickSlotWindow = CreateWidget<UQuickSlotWindow>(GetWorld(), W_QuickSlotWindow);
-	m_SkillWindow = CreateWidget<USkillWindow>(GetWorld(), W_SkillWindow);
+	m_pHUD = CreateWidget<UHeadsUpDisplay>(GetWorld(), W_HUD);
+	m_pInventory = CreateWidget<UInventory>(GetWorld(), W_Inventory);
+	m_pQuickSlotWindow = CreateWidget<UQuickSlotWindow>(GetWorld(), W_QuickSlotWindow);
+	m_pSkillWindow = CreateWidget<USkillWindow>(GetWorld(), W_SkillWindow);
 	m_StatusWindow = CreateWidget<UStatusWindow>(GetWorld(), W_StatusWindow);
-	m_QuestWindow = CreateWidget<UQuestWindow>(GetWorld(), W_QuestWindow);
-	m_QuestContent = CreateWidget<UQuestContent>(GetWorld(), W_QuestContent);
+	m_pQuestWindow = CreateWidget<UQuestWindow>(GetWorld(), W_QuestWindow);
+	m_pQuestContent = CreateWidget<UQuestContent>(GetWorld(), W_QuestContent);
 	m_PauseMenu = CreateWidget<UPauseMenu>(GetWorld(), W_PauseMenu);
 
 
-	m_HUD->AddToViewport(1);
-	m_QuickSlotWindow->SetAnchorsInViewport(FAnchors(0.5f, 1.0f));
-	m_QuickSlotWindow->SetAlignmentInViewport(FVector2D(0.5f, 1.0f));
-	m_QuickSlotWindow->AddToViewport(2);
+	m_pHUD->AddToViewport(1);
+	m_pQuickSlotWindow->SetAnchorsInViewport(FAnchors(0.5f, 1.0f));
+	m_pQuickSlotWindow->SetAlignmentInViewport(FVector2D(0.5f, 1.0f));
+	m_pQuickSlotWindow->AddToViewport(2);
 
-	m_CanvasPanelUI = m_HUD->F_GetCanvasPanelUI();
+	m_CanvasPanelUI = m_pHUD->F_GetCanvasPanelUI();
 }
 
 void UWidgetManager::F_ToggleUI(EUIType UIType)
@@ -369,14 +369,14 @@ void UWidgetManager::F_ToggleRevivalMenu()
 {
 	if (!m_bIsOpenedRevivalMenu)
 	{
-		m_HUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Visible);
-		m_HUD->F_GetGameEndMenu()->F_DisplayRevivalMenu();
+		m_pHUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Visible);
+		m_pHUD->F_GetGameEndMenu()->F_DisplayRevivalMenu();
 		UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(m_PlayerController);
 		m_PlayerController->SetShowMouseCursor(true);
 	}
 	else
 	{
-		m_HUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Hidden);
+		m_pHUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Hidden);
 		UWidgetBlueprintLibrary::SetInputMode_GameOnly(m_PlayerController);
 		m_PlayerController->SetShowMouseCursor(false);
 	}
@@ -387,8 +387,8 @@ void UWidgetManager::F_ToggleGameClearMenu()
 {
 	if (!m_bIsOpenedGameClearMenu)
 	{
-		m_HUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Visible);
-		m_HUD->F_GetGameEndMenu()->F_DisplayGameClearMenu();
+		m_pHUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Visible);
+		m_pHUD->F_GetGameEndMenu()->F_DisplayGameClearMenu();
 		UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(m_PlayerController);
 		m_PlayerController->SetShowMouseCursor(true);
 		UGameplayStatics::SetGamePaused(GetWorld(), true);
@@ -396,7 +396,7 @@ void UWidgetManager::F_ToggleGameClearMenu()
 	else
 	{
 		UGameplayStatics::SetGamePaused(GetWorld(), false);
-		m_HUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Hidden);
+		m_pHUD->F_GetGameEndMenu()->SetVisibility(ESlateVisibility::Hidden);
 		UWidgetBlueprintLibrary::SetInputMode_GameOnly(m_PlayerController);
 		m_PlayerController->SetShowMouseCursor(false);
 	}
@@ -414,7 +414,7 @@ void UWidgetManager::F_CloseAllUI()
 	m_bIsOpenedQuestContent = false;
 	m_bIsOpenedAnyUI = false;
 	m_PlayerController->F_InputIgnoreToggle(false);
-	m_HUD->F_DisplayConfirmWindow(false);
+	m_pHUD->F_DisplayConfirmWindow(false);
 
 	UWidgetBlueprintLibrary::SetInputMode_GameOnly(m_PlayerController);
 	m_PlayerController->SetShowMouseCursor(false);
@@ -424,13 +424,13 @@ void UWidgetManager::F_DisplayHUD(bool bDislpay)
 {
 	if (bDislpay)
 	{
-		m_HUD->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
-		m_QuickSlotWindow->SetVisibility(ESlateVisibility::Visible);
+		m_pHUD->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
+		m_pQuickSlotWindow->SetVisibility(ESlateVisibility::Visible);
 	}
 	else
 	{
-		m_HUD->SetVisibility(ESlateVisibility::Hidden);
-		m_QuickSlotWindow->SetVisibility(ESlateVisibility::Hidden);
+		m_pHUD->SetVisibility(ESlateVisibility::Hidden);
+		m_pQuickSlotWindow->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
 
@@ -438,99 +438,4 @@ void UWidgetManager::F_ShowGameMethod()
 {
 	F_TogglePauseMenu();
 	m_PauseMenu->F_OpenPanelGameMethod();
-}
-
-UHeadsUpDisplay* UWidgetManager::F_GetHUD()
-{
-	return m_HUD;
-}
-
-UInventory* UWidgetManager::F_GetInventory()
-{
-	return m_Inventory;
-}
-
-USkillWindow* UWidgetManager::F_GetSkillWindow()
-{
-	return m_SkillWindow;
-}
-
-UQuickSlotWindow* UWidgetManager::F_GetQuickSlotWindow()
-{
-	return m_QuickSlotWindow;
-}
-
-UQuestContent* UWidgetManager::F_GetQuestContent()
-{
-	return m_QuestContent;
-}
-
-UQuestWindow* UWidgetManager::F_GetQuestWindow()
-{
-	return m_QuestWindow;
-}
-
-bool UWidgetManager::F_GetbOpenedAnyUI()
-{
-	return m_bIsOpenedAnyUI;
-}
-
-TSubclassOf<USlot_Base> UWidgetManager::F_GetBPInventorySlot()
-{
-	return W_InventorySlot;
-}
-
-TSubclassOf<USlot_Base> UWidgetManager::F_GetBPQuickSlot()
-{
-	return W_QuickSlot;
-}
-
-TSubclassOf<USlot_Base> UWidgetManager::F_GetBPSkillSlot()
-{
-	return W_SkillSlot;
-}
-
-TSubclassOf<USkillToolTip> UWidgetManager::F_GetBPSkillToolTip()
-{
-	return W_SkillToolTip;
-}
-
-TSubclassOf<UItemPopUp> UWidgetManager::F_GetBPItemPopUp()
-{
-	return W_ItemPopUp;
-}
-
-TSubclassOf<UItemToolTip> UWidgetManager::F_GetBPItemToolTip()
-{
-	return W_ItemToolTip;
-}
-
-TSubclassOf<UDragIcon> UWidgetManager::F_GetBPDragIcon()
-{
-	return W_DragIcon;
-}
-
-TSubclassOf<UQuestObjectiveItem> UWidgetManager::F_GetBPQuestObjectiveItem()
-{
-	return W_QuestObjectiveItem;
-}
-
-TSubclassOf<UQuestLogEntry> UWidgetManager::F_GetBPQuestLogEntry()
-{
-	return W_QuestLogEntry;
-}
-
-TSubclassOf<UQuestSingleObjective> UWidgetManager::F_GetBPQuestSingleObjective()
-{
-	return W_QuestSingleObjective;
-}
-
-TSubclassOf<UBuffIcon> UWidgetManager::F_GetBPBuffIcon()
-{
-	return W_BuffIcon;
-}
-
-TSubclassOf<USlot_Base> UWidgetManager::F_GetBPRewardSlot()
-{
-	return W_RewardSlot;
 }

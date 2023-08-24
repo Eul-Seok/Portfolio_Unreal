@@ -126,13 +126,3 @@ void UInventorySlot::F_SetItemData(FItemData* ItemData)
 	m_pItemData = ItemData;
 	m_pItemToolTip->F_SetItemData(m_pItemData);
 }
-
-FItemData* UInventorySlot::F_GetItemData()
-{
-	return m_pItemData;
-}
-
-UItemPopUp* UInventorySlot::F_GetItemPopUp()
-{
-	return m_pItemPopUp;
-}

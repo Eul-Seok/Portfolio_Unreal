@@ -37,9 +37,9 @@ protected:
 public:
 	bool F_ItemGet(ATestCpp1Character* Character);
 	void F_DestroyPickUpRange();
-	UStaticMeshComponent* GetStaticMeshComponent();
-
+	
 public:
-	FName* F_GetRowName();
+	FORCEINLINE UStaticMeshComponent* GetStaticMeshComponent() { return ItemMesh; }
+	FORCEINLINE FName* F_GetRowName() { return &m_RowName; }
 };
 

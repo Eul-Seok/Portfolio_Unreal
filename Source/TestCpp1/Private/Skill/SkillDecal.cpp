@@ -20,18 +20,3 @@ ASkillDecal::ASkillDecal():
 	DecalStaticMesh->SetupAttachment(RootComponent);
 	SkillRage->SetupAttachment(DecalStaticMesh);
 }
-
-USceneComponent* ASkillDecal::F_GetRootScene()
-{
-	return RootScene;
-}
-
-USphereComponent* ASkillDecal::F_GetOverlapSphere()
-{
-	return OverlapSphere;
-}
-
-USphereComponent* ASkillDecal::F_GetSkillRage()
-{
-	return SkillRage;
-}

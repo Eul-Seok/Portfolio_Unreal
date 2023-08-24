@@ -19,5 +19,5 @@ protected:
 	TArray<TSubclassOf<class AMonsterSkill_Base>> m_MonsterSKillList;
 	
 public:
-	TArray<TSubclassOf<AMonsterSkill_Base>>* F_GetMonsterSkillList();
+	FORCEINLINE TArray<TSubclassOf<AMonsterSkill_Base>>* F_GetMonsterSkillList() { return &m_MonsterSKillList; }
 };

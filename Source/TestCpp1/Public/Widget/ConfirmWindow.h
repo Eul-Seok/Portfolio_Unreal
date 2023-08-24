@@ -33,9 +33,12 @@ protected:
 	UFUNCTION()
 	void OnButtonNoClicked();
 
-
 public:
 	void F_SetInventoryIndex(uint8 InventoryIndex);
-	uint8 F_GetInventoryIndex();
+
+public:
+	FORCEINLINE uint8 F_GetInventoryIndex() { return m_nInventoryIndex; }
+
+public:
 	FDele_Single DELE_ButtonYes;
 };

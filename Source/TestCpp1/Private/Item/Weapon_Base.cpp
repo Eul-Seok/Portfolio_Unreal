@@ -51,21 +51,6 @@ void AWeapon_Base::F_SetbStunAttack(bool IsStun)
 	m_bStunAttack = IsStun;
 }
 
-USoundBase* AWeapon_Base::F_GetSoundMonsterHit()
-{
-	return m_SoundMonsterHit;
-}
-
-UParticleSystemComponent* AWeapon_Base::F_GetTrail()
-{
-	return TrailParticleSystemComponent;
-}
-
-float AWeapon_Base::F_GetWeaponDamage()
-{
-	return m_fWeaponDamage;
-}
-
 void AWeapon_Base::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	FString TargetName = OtherActor->GetName();
