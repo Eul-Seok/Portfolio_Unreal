@@ -10,10 +10,13 @@
 #include "Manager/ItemManager.h"
 #include "Manager/WidgetManager.h"
 #include "Monster/MonsterSpawner.h"
+#include "Kismet/GameplayStatics.h"
 #include "Item/Item.h"
 #include <LevelSequence/Public/LevelSequenceActor.h>
 #include <LevelSequence/Public/LevelSequencePlayer.h>
 #include "Player/MyPlayerController.h"
+#include "Widget/InventorySlot.h"
+
 
 ALocationMarker::ALocationMarker():
 	Scene_Root{}, LocationReachedCollision{}, m_pGameMgr{}, m_eLocationMarkerType{}, m_CheckItem{}, m_pMonsterSpawner{}, m_LevelSequenceActor{}
