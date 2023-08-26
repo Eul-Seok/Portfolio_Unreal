@@ -33,6 +33,7 @@ protected:
 		class UButton* Button_Quit2;
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 
 protected:

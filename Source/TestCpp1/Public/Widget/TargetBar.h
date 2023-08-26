@@ -32,6 +32,7 @@ protected:
 	class AMyPlayerController* m_PlayerController;
 	UPROPERTY()
 	class AMonster* m_Target;
+	UPROPERTY()
 	class UMonsterStatusComponent* m_MonsterStatusComponent;
 
 protected:

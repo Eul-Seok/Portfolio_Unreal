@@ -33,8 +33,11 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	ESlotType m_eSlotType;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
+	UPROPERTY()
 	class APlayerController* m_PlayerController;
 	UPROPERTY()
 	TSubclassOf<UDragIcon> W_DragIcon;

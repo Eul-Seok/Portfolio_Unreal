@@ -23,8 +23,11 @@ protected:
 	virtual void SetupInputComponent() override;
 
 protected:
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class AMonster* m_pCurrentTarget;
 	bool m_bJumpInput;
 	bool m_bTargetingMode;

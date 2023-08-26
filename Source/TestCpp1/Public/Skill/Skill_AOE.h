@@ -23,6 +23,7 @@ protected:
 	float m_EndLocationFactor;
 	FVector m_SpawnStartLocation;
 	FVector m_SpawnEndLocation;
+	UPROPERTY()
 	TArray<FHitResult> m_arOutHit;
 	FHitResult* m_pOutHit;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

@@ -25,6 +25,7 @@ protected:
 	class UWrapBox* BuffPanel;
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY()
 	TSubclassOf<UBuffIcon> W_BuffIcon;

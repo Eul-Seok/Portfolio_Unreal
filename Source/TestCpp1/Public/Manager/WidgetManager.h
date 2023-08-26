@@ -73,7 +73,9 @@ protected:
 	TSubclassOf<class USlot_Base> W_RewardSlot;
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class AMyPlayerController* m_PlayerController;
 	UPROPERTY()
 	class UHeadsUpDisplay* m_pHUD;

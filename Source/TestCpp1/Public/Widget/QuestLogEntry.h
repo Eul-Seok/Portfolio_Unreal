@@ -23,7 +23,9 @@ protected:
 	class UTextBlock* Text_QuestName;
 	
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class AQuest* m_Quest;
 	bool bActive;
 

@@ -24,6 +24,7 @@ protected:
 	IInterface_Affect* m_Interface_Affect;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UParticleSystem* m_SkillParticle;
+	UPROPERTY()
 	UParticleSystemComponent* m_SpawnedSkillParticle;
 
 protected:

@@ -19,6 +19,7 @@ public:
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AProjectileObject> m_ProjectileClass;
+	UPROPERTY()
 	AProjectileObject* m_ProjectileObject;
 
 protected:

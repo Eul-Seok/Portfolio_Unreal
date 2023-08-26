@@ -48,7 +48,9 @@ protected:
 	TSubclassOf<UQuestObjectiveItem> W_QuestObjectiveItem;
 	UPROPERTY()
 	TSubclassOf<URewardSlot> W_RewardSlot;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class AQuest* m_Quest;
 
 protected:

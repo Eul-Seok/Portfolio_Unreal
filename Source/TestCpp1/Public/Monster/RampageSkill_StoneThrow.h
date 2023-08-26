@@ -22,6 +22,7 @@ protected:
 	bool m_bHasStone;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AProjectileObject> m_ProjectileClass;
+	UPROPERTY()
 	AProjectileObject* m_ProjectileObject;
 
 protected:

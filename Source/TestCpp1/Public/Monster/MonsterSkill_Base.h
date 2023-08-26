@@ -22,6 +22,7 @@ protected:
 
 
 protected:
+	UPROPERTY()
 	class AMonster* m_Monster;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -38,7 +39,9 @@ protected:
 	bool m_bStunSkill;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float m_fStunDuration;
+	UPROPERTY()
 	class UParticleSystemComponent* m_SpawnedSkillParticle;
+	UPROPERTY()
 	class ASkillDecal* m_SpawnedSkillDecal;
 
 	FTimerHandle m_ParticleTimerHandle;

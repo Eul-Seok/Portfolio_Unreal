@@ -15,5 +15,6 @@ class TESTCPP1_API USlotDragDropOperation : public UDragDropOperation
 public:
 	ESlotType m_eDragBeginSlotType;
 	uint8 m_nDragBeginIndex;
+	UPROPERTY()
 	class USlot_Base* m_pDragBeginSlot;
 };

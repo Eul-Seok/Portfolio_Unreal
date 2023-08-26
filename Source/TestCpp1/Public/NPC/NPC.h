@@ -32,6 +32,7 @@ protected:
 
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText m_Name;

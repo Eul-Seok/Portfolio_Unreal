@@ -23,7 +23,9 @@ protected:
 protected:
 	UPROPERTY()
 	TSubclassOf<UQuestSingleObjective> W_QuestSingleObjective;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class UQuestLog* m_QuestLog;
 
 protected:

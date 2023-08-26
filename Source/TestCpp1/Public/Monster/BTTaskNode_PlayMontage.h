@@ -18,7 +18,9 @@ public:
 	UFUNCTION()
 	void CallAttackEnd();
 protected:
+	UPROPERTY()
 	UAnimMontage* m_AnimDefaultAttack;
+	UPROPERTY()
 	class AMonsterAIController* m_AIController;
 	bool bAttacking;
 };

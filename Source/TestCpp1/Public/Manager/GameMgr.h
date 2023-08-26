@@ -32,7 +32,7 @@ protected:
 	class USoundManager* m_pSoundMgr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UQuestLog* m_QuestLogComponent;
-
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
 	
 

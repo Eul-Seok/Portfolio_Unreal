@@ -44,6 +44,7 @@ protected:
 	FName m_SkillRowName;
 	FSkillData* m_PlayerSkillData;
 	FVector m_vHitImpactVector;
+	UPROPERTY()
 	ACharacter* m_pCaster;
 
 

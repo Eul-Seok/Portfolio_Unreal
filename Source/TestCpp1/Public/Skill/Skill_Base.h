@@ -18,10 +18,15 @@ public:
 	ASkill_Base();
 
 protected:
+	UPROPERTY()
 	ACharacter* m_pCaster;
+	UPROPERTY()
 	ACharacter* m_pTarget;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
+	UPROPERTY()
 	class AMyPlayerController* m_PlayerController;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UDataTable* m_pSkillDataTable;

@@ -35,6 +35,7 @@ protected:
 		class UGameMethodWindow* W_GameMethodWindow;
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 
 protected:

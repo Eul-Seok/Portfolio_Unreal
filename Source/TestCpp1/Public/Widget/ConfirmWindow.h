@@ -23,6 +23,7 @@ protected:
 	class UButton* Button_No;
 	
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	uint8 m_nInventoryIndex;
 

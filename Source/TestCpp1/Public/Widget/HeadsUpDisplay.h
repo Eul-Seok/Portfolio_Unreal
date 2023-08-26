@@ -44,6 +44,7 @@ protected:
 
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	FTimerHandle m_TextAlertTimer;
 

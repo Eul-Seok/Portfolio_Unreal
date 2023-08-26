@@ -24,7 +24,9 @@ protected:
 	void OrganiseQuestInEditor();
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class ANPC* m_QuestOwner;

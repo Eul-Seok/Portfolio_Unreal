@@ -51,7 +51,9 @@ protected:
 	TSubclassOf<UQuestLogEntry> W_QuestLogEntry;
 	UPROPERTY()
 	TSubclassOf<URewardSlot> W_RewardSlot;
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	class UQuestLog* m_QuestLog;
 
 protected:

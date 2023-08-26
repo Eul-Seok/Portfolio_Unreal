@@ -31,6 +31,7 @@ protected:
 	UWidgetAnimation* Reset;
 
 public:
+	UPROPERTY()
 	class ASkill_Base* m_Skill;
 	UPROPERTY()
 	FTimerHandle m_CastTimer;

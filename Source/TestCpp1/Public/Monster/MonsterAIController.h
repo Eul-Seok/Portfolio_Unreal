@@ -28,6 +28,7 @@ public:
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UAIPerceptionComponent* AIPerception;
+	UPROPERTY()
 	class UAISenseConfig_Sight* SightConfig;
 
 protected:
@@ -35,6 +36,7 @@ protected:
 	class UBehaviorTree* BTAsset;
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite)
 	class UBlackboardData* BBAsset;
+	UPROPERTY()
 	class ATestCpp1Character* m_Player;
 	FDelegateHandle m_DelegateHandle;
 

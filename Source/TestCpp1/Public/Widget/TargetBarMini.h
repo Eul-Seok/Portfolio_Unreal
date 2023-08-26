@@ -27,7 +27,9 @@ protected:
 	class UProgressBar* TargetHealthBar;
 
 protected:
+	UPROPERTY()
 	class AMonster* m_Monster;
+	UPROPERTY()
 	class AMyPlayerController* m_PlayerController;
 
 protected:

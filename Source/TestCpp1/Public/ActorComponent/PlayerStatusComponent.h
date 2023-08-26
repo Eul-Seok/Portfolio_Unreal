@@ -30,7 +30,9 @@ public:
 	UPlayerStatusComponent();
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
+	UPROPERTY()
 	ATestCpp1Character* m_Player;
 	float m_fExpMax;
 	float m_fExpCurrent;

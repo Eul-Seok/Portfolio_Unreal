@@ -24,6 +24,7 @@ protected:
 	class UUniformGridPanel* UniformGridPanel_Slot;
 
 protected:
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY()
 	TArray<UQuickSlot*> m_arQuickSlot;

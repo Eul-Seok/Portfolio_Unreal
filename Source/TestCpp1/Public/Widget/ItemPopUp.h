@@ -23,7 +23,7 @@ public:
 	class UButton* Button_Destroy;
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 	class UTextBlock* UseButtonText;
-
+	UPROPERTY()
 	class AGameMgr* m_pGameMgr;
 	UPROPERTY()
 	uint8 m_InventoryIndex;
