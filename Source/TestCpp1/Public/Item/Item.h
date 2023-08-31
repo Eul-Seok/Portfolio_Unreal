@@ -14,7 +14,6 @@ class TESTCPP1_API AItem : public AActor
 	
 public:	
 	AItem();
-	virtual ~AItem();
 
 protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)

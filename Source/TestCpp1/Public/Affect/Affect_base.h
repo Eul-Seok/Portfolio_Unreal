@@ -14,7 +14,6 @@ class TESTCPP1_API UAffect_base : public UObject, public IInterface_Affect
 	
 public:
 	UAffect_base();
-	virtual ~UAffect_base();
 
 protected:
 	class IInterface_StatusComponent* m_Interface_StatusComponent;

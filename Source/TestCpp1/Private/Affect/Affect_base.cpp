@@ -8,10 +8,6 @@ UAffect_base::UAffect_base() :
 {
 }
 
-UAffect_base::~UAffect_base()
-{
-}
-
 bool UAffect_base::F_Apply(ACharacter* Character, float fValue, EOperatorType eOperator)
 {
 	return false;

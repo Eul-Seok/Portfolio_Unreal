@@ -51,8 +51,4 @@ void AItem::F_DestroyPickUpRange()
 	PickUpRange->DestroyComponent();
 }
 
-AItem::~AItem()
-{
-}
-
 

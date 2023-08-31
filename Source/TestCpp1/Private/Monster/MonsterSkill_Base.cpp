@@ -10,7 +10,6 @@ AMonsterSkill_Base::AMonsterSkill_Base()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-
 void AMonsterSkill_Base::BeginPlay()
 {
 	Super::BeginPlay();
