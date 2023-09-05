@@ -12,10 +12,11 @@ UCLASS()
 class TESTCPP1_API UUnequipOneHandWeapon : public UAnimNotify
 {
 	GENERATED_BODY()
+
 public:
 	UUnequipOneHandWeapon();
 
-public:
+protected:
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 	void MinusWeaponDamage(ATestCpp1Character* Player);
 	void UpdateApplyBuff(const ATestCpp1Character* Player);

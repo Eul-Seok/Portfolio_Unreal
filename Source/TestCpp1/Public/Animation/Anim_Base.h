@@ -14,7 +14,7 @@ class TESTCPP1_API UAnim_Base : public UAnimInstance
 public:
 	UAnim_Base();
 
-public:
+protected:
 	virtual void NativeBeginPlay();
 	virtual void NativeInitializeAnimation();
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
@@ -53,7 +53,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class AMyPlayerController* m_PlayerController;
 
-private:
+protected:
 	void Initialize();
 
 public:

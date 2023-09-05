@@ -14,7 +14,7 @@ class TESTCPP1_API UAttackSetting : public UAnimNotifyState
 {
 	GENERATED_BODY()
 
-public:
+protected:
 	virtual void NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration) override;
 	virtual void NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 	float CalculatefFinalAffectValue(float AffectValue, uint8 SkillLevel);

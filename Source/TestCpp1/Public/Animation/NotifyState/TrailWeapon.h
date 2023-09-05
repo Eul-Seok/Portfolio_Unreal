@@ -11,7 +11,7 @@ class TESTCPP1_API UTrailWeapon : public UAnimNotifyState
 {
 	GENERATED_BODY()
 
-public:
+protected:
 	virtual void NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration) override;
 	virtual void NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 
