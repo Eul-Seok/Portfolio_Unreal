@@ -134,7 +134,7 @@ void USkillManager::F_SetQuickSlotMap(uint8 SkillWindowIndex, EQuickSlotNumber e
 	m_QuickSlotMap.Emplace(SkillWindowIndex, eQuickSlotNumber);
 }
 
-TArray<USkillSlot*>* USkillManager::F_GetSkillSlotArray()
+TArray<USkillSlot*>* USkillManager::F_GetSkillSlotArray() const
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetSkillWindow()->F_GetarSkillSlot();
 }

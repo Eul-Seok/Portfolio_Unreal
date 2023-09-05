@@ -45,7 +45,7 @@ protected:
 	virtual void NativeOnInitialized() override;
 	virtual void NativeDestruct() override;
 
-private:
+protected:
 	void CreateSkillSlotArray(TArray<USkillSlot*>* arSkillSlot, uint8 nLength, uint8 nColumn);
 	USkillSlot* CreateSkillSlot(UUniformGridPanel* UniformGirdPanel, uint8 nRow, uint8 nColumn);
 

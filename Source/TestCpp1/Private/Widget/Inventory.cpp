@@ -31,7 +31,7 @@ void UInventory::NativeOnInitialized()
 	{
 		CreateInventorySlot(Index / nColumn, Index % nColumn);
 		m_arInventorySlot[Index]->F_SetInventoryIndex(Index);
-		m_arInventorySlot[Index]->F_GetItemPopUp()->SetInventoryIndex(Index);
+		m_arInventorySlot[Index]->F_GetItemPopUp()->F_SetInventoryIndex(Index);
 		m_arInventorySlot[Index]->F_SetItemData(ItemDataDefault);
 		m_arInventorySlot[Index]->F_UpdateInventorySlotIcon();
 	}

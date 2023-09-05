@@ -22,7 +22,7 @@ class TESTCPP1_API UQuestWindow : public UUserWidget
 public:
 	UQuestWindow(const FObjectInitializer& ObjectInitializer);
 
-public:
+protected:
 	UPROPERTY(meta = (BindWidget))
 	class UTitleBar* W_TitleBar;
 	UPROPERTY(meta = (BindWidget))

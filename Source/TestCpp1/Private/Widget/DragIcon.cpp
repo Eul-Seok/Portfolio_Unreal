@@ -15,3 +15,8 @@ void UDragIcon::NativeConstruct()
 	DragIcon->SetBrushResourceObject(m_pDragImage);
 }
 
+void UDragIcon::F_SetDragImage(UObject* DragImage)
+{
+	m_pDragImage = DragImage;
+}
+

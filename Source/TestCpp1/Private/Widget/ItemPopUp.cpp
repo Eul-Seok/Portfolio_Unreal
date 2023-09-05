@@ -59,7 +59,7 @@ void UItemPopUp::CallItemDestroy()
 	m_pGameMgr->F_GetSoundMgr()->F_PlaySound(EPlaySound::E_SoundItemDestroy);
 }
 
-void UItemPopUp::SetInventoryIndex(uint8 Index)
+void UItemPopUp::F_SetInventoryIndex(uint8 Index)
 {
 	m_InventoryIndex = Index;
 }

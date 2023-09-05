@@ -20,11 +20,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-
 protected:
 	UPROPERTY()
 	class AMonster* m_Monster;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UAnimMontage* m_AnimMontage;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -46,15 +44,16 @@ protected:
 
 	FTimerHandle m_ParticleTimerHandle;
 	FOnMontageEnded CompleteDelegate;
-	
 
-public:
+protected:
 	UFUNCTION()
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload);
 	virtual void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted);
 	virtual void ResetEffect();
 	virtual void ActivateEffect();
 	virtual ASkillDecal* SpawnDecal();
+
+public:
 	virtual void F_ApplySkillDamge(AActor* Player);
 	
 public:

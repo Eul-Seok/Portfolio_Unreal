@@ -22,14 +22,12 @@ protected:
 	class USceneComponent* Scene_InteractBox;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UCapsuleComponent* InteractBoxCollision;
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class USceneComponent* Scene_TextRender;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UTextRenderComponent* TextRenderHasQuest;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UTextRenderComponent* TextRenderNPCName;
-
 
 protected:
 	UPROPERTY()

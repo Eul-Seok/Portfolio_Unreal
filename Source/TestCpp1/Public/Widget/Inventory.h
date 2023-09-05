@@ -33,7 +33,7 @@ protected:
 	virtual void NativeOnInitialized() override;
 	virtual void NativeDestruct() override;
 
-private:
+protected:
 	void CreateInventorySlot(uint8 Row, uint8 Column);
 
 public:

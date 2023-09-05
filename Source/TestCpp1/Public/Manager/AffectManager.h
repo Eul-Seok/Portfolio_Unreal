@@ -24,5 +24,5 @@ protected:
 
 public:
 	void F_Init();
-	FORCEINLINE UAffect_base* F_GetAffect(EAffectType eAffect) { return m_arAffect[(uint8)eAffect]; }
+	FORCEINLINE UAffect_base* F_GetAffect(EAffectType eAffect) const { return m_arAffect[(uint8)eAffect]; }
 };

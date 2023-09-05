@@ -196,12 +196,7 @@ void AMonster::Ragdoll(const FVector* pHitImactVector)
 	GetMesh()->AddForce(*pHitImactVector * 7000, NAME_None, true);
 }
 
-AGameMgr* AMonster::F_GetGameMgr()
-{
-	return m_pGameMgr;
-}
-
-void AMonster::F_SetTarget()
+void AMonster::F_UpdateTarget()
 {
 	AMyPlayerController* PlayerController = Cast<AMyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	m_HandleTargetCancled = PlayerController->DELE_TargetCancled.AddUFunction(this, FName("F_CallClearTargetIndicator"));

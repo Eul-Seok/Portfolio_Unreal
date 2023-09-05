@@ -18,12 +18,12 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+
 protected:	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class USceneComponent* Scene_Default;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UWidgetComponent* Widget_DamageIndicator;
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UCurveFloat* CurveFloat_Move;
 	FTimeline Timeline_Move;

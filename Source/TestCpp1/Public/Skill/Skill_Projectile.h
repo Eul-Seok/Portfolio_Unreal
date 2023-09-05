@@ -25,6 +25,6 @@ protected:
 protected:
 	void SpawnProjectileObject();
 
-public:
+protected:
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload) override;
 };

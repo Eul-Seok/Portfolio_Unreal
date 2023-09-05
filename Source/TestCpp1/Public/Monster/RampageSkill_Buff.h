@@ -22,7 +22,7 @@ protected:
 	float m_fBuffDuration;
 	class IInterface_Affect* m_Interface_Affect;
 
-public:
+protected:
 	virtual void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted) override;
 	virtual void ResetEffect() override;
 	virtual void ActivateEffect() override;

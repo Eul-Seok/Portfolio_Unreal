@@ -41,9 +41,9 @@ public:
 	void F_SetbStunAttack(bool IsStun);
 
 public:
-	FORCEINLINE USoundBase* F_GetSoundMonsterHit() { return m_SoundMonsterHit; }
-	FORCEINLINE UParticleSystemComponent* F_GetTrail() { return TrailParticleSystemComponent; }
-	FORCEINLINE float F_GetWeaponDamage() { return m_fWeaponDamage; }
+	FORCEINLINE USoundBase* F_GetSoundMonsterHit() const { return m_SoundMonsterHit; }
+	FORCEINLINE UParticleSystemComponent* F_GetTrail() const { return TrailParticleSystemComponent; }
+	FORCEINLINE float F_GetWeaponDamage() const { return m_fWeaponDamage; }
 
 protected:
 	UFUNCTION()

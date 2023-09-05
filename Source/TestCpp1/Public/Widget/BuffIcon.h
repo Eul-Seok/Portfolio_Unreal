@@ -16,7 +16,7 @@ class TESTCPP1_API UBuffIcon : public UUserWidget
 public:
 	UBuffIcon(const FObjectInitializer& ObjectInitializer);
 
-public:
+protected:
 	UPROPERTY(meta = (BindWidget))
 	class UImage* Image_BuffIcon;
 	UPROPERTY(meta = (BindWidget))

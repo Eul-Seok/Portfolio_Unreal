@@ -39,13 +39,13 @@ public:
 	void F_SetQuickSlotMap(uint8 InventoryIndex, EQuickSlotNumber QuickSlotNumber);
 
 public:
-	FORCEINLINE UDataTable* F_GetItemDataTable() { return m_pItemDataTable; }
-	FORCEINLINE FItemData* F_GetItemDataDefault() { return m_pItemDataDefault; }
-	FORCEINLINE uint8 F_GetLength() { return m_nLength; }
-	FORCEINLINE uint8 F_GetRowCount() { return m_nItemRowCount; }
-	FORCEINLINE uint8 F_GetColumnCount() { return m_nItemColumnCount; }
-	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber QuickSlotNumber) { return *m_QuickSlotMap.FindKey(QuickSlotNumber); }
-	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 InventoryIndex) { return m_QuickSlotMap[InventoryIndex]; }
-	TArray<class UInventorySlot*>* F_GetInventorySlotArray();
-	bool F_GetIsEnableItem(uint8 Index);
+	FORCEINLINE UDataTable* F_GetItemDataTable() const { return m_pItemDataTable; }
+	FORCEINLINE FItemData* F_GetItemDataDefault() const { return m_pItemDataDefault; }
+	FORCEINLINE uint8 F_GetLength() const { return m_nLength; }
+	FORCEINLINE uint8 F_GetRowCount() const { return m_nItemRowCount; }
+	FORCEINLINE uint8 F_GetColumnCount() const { return m_nItemColumnCount; }
+	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber QuickSlotNumber) const { return *m_QuickSlotMap.FindKey(QuickSlotNumber); }
+	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 InventoryIndex) const { return m_QuickSlotMap[InventoryIndex]; }
+	TArray<class UInventorySlot*>* F_GetInventorySlotArray() const;
+	bool F_GetIsEnableItem(uint8 Index) const;
 };

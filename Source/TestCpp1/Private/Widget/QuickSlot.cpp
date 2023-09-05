@@ -57,14 +57,14 @@ void UQuickSlot::NativeOnDragDetected(const FGeometry& InGeometry, const FPointe
 {
 	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
 	UDragIcon* pNewDragIcon = CreateWidget<UDragIcon>(this, W_DragIcon);
-	pNewDragIcon->m_pDragImage = Image_Item->Brush.GetResourceObject();
+	pNewDragIcon->F_SetDragImage(Image_Item->Brush.GetResourceObject());
 	USlotDragDropOperation* pDragDropOperation = Cast<USlotDragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USlotDragDropOperation::StaticClass()));
 	if (pDragDropOperation)
 	{
 		pDragDropOperation->DefaultDragVisual = pNewDragIcon;
-		pDragDropOperation->m_eDragBeginSlotType = m_eSlotType;
-		pDragDropOperation->m_nDragBeginIndex = m_nQuickSlotIndex;
-		pDragDropOperation->m_pDragBeginSlot = this;
+		pDragDropOperation->F_SetDragBeginSlotType(m_eSlotType);
+		pDragDropOperation->F_SetDragBeginIndex(m_nQuickSlotIndex);
+		pDragDropOperation->F_SetDragBeginSlot(this);
 		OutOperation = pDragDropOperation;
 	}
 }
@@ -76,11 +76,11 @@ bool UQuickSlot::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent&
 	bool bSucess{};
 	uint8 nDragBeginIndex{};
 	USlotDragDropOperation* Operation = Cast<USlotDragDropOperation>(InOperation);
-	nDragBeginIndex = Operation->m_nDragBeginIndex;
-	if (Operation->m_eDragBeginSlotType == ESlotType::E_QuickSlot)
+	nDragBeginIndex = Operation->F_GetDragBeginIndex();
+	if (Operation->F_GetDragBeginSlotType() == ESlotType::E_QuickSlot)
 	{
 		m_pGameMgr->F_GetWidgetMgr()->F_GetQuickSlotWindow()->F_QuickSlotDataSwap(m_nQuickSlotIndex, nDragBeginIndex);
-		Operation->m_pDragBeginSlot->Image_Down->SetVisibility(ESlateVisibility::Hidden);
+		Operation->F_GetDragBeginSlot()->F_GetImageDown()->SetVisibility(ESlateVisibility::Hidden);
 		Image_Down->SetVisibility(ESlateVisibility::Hidden);
 		bSucess = true;
 		return bSucess;
@@ -88,11 +88,11 @@ bool UQuickSlot::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent&
 	else
 	{
 		EQuickSlotNumber ePairQuickSlotNumber{};
-		if (Operation->m_eDragBeginSlotType == ESlotType::E_InventorySlot)
+		if (Operation->F_GetDragBeginSlotType() == ESlotType::E_InventorySlot)
 		{
 			ePairQuickSlotNumber = m_pGameMgr->F_GetInventoryMgr()->F_GetQuickSlotMapValue(nDragBeginIndex);
 		}
-		else if (Operation->m_eDragBeginSlotType == ESlotType::E_SkillSlot)
+		else if (Operation->F_GetDragBeginSlotType() == ESlotType::E_SkillSlot)
 		{
 			ePairQuickSlotNumber = m_pGameMgr->F_GetSkillMgr()->F_GetQuickSlotMapValue(nDragBeginIndex);
 		}
@@ -103,9 +103,9 @@ bool UQuickSlot::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent&
 			
 			(*arQuickSlot)[nPairQuickSlotIndex]->F_QuickSlotRegistrationCancle();
 		}
-		bSucess = F_QuickSlotRegistration(Operation->m_eDragBeginSlotType, Operation->m_nDragBeginIndex);
+		bSucess = F_QuickSlotRegistration(Operation->F_GetDragBeginSlotType(), Operation->F_GetDragBeginIndex());
 	}
-	Operation->m_pDragBeginSlot->Image_Down->SetVisibility(ESlateVisibility::Hidden);
+	Operation->F_GetDragBeginSlot()->F_GetImageDown()->SetVisibility(ESlateVisibility::Hidden);
 	Image_Down->SetVisibility(ESlateVisibility::Hidden);
 	UGameplayStatics::PlaySound2D(GetWorld(), m_SoundDrop);
 	return bSucess;
@@ -258,7 +258,7 @@ void UQuickSlot::F_SetQuickSlotIndex(uint8 QuickSlotIndex)
 	m_nQuickSlotIndex = QuickSlotIndex;
 }
 
-void UQuickSlot::F_SetQuickSlotData(S_QUICKSLOTDATA* pQuickSlotData)
+void UQuickSlot::F_SetQuickSlotData(FQuickSlotData* pQuickSlotData)
 {
 	m_sQuickSlotData = *pQuickSlotData;
 }

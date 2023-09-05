@@ -27,8 +27,6 @@ protected:
 
 protected:
 	virtual void BeginPlay() override;
-
-public:
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload) override;
 	virtual void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted) override;
 	void CreateStone();

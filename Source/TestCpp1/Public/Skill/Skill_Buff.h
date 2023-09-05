@@ -41,9 +41,9 @@ public:
 	void F_UpdateApplyBuff();
 
 public:
-	FTimerHandle* F_GetBuffTimerHandle();
+	FORCEINLINE FTimerHandle* F_GetBuffTimerHandle() { return &m_BuffTimerHandle; }
 
-public:
+protected:
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload) override;
 	void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted) override;
 

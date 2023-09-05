@@ -73,13 +73,13 @@ public:
 	FORCEINLINE FText* F_GetName() { return &m_Name; }
 	FORCEINLINE FText* F_GetDescription() { return &m_Description; }
 	FORCEINLINE TArray<FQuestObjectiveData>* F_GetObjectiveData() { return &m_arObjectiveData; }
-	FORCEINLINE bool F_GetbStoryQuest() { return m_bStoryQuest; }
-	FORCEINLINE bool F_GetbComplete() { return m_bComplete; }
-	FORCEINLINE bool F_GetbAccept() { return m_bAccept; }
-	FORCEINLINE uint8 F_GetCurrentAchievementCount() { return m_nCurrentAchievementCount; }
-	FORCEINLINE AQuest* F_GetPreRequisiteQuest() { return m_PreRequisiteQuest; }
+	FORCEINLINE bool F_GetbStoryQuest() const { return m_bStoryQuest; }
+	FORCEINLINE bool F_GetbComplete() const { return m_bComplete; }
+	FORCEINLINE bool F_GetbAccept() const { return m_bAccept; }
+	FORCEINLINE uint8 F_GetCurrentAchievementCount() const { return m_nCurrentAchievementCount; }
+	FORCEINLINE AQuest* F_GetPreRequisiteQuest() const { return m_PreRequisiteQuest; }
 	FORCEINLINE TArray<TSubclassOf<AItem>>* F_GetarRewardItem() { return &m_arRewardItem; }
-	FORCEINLINE float F_GetRewardExp() { return m_RewardExp; }
+	FORCEINLINE float F_GetRewardExp() const { return m_RewardExp; }
 
 public:
 	FDele_Multi_OneParam DELE_LocationReached;

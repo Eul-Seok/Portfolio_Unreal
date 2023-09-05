@@ -23,9 +23,11 @@ protected:
 	void CastComplete();
 	virtual ASkillDecal* SpawnDecal() override;
 
-public:
+protected:
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload) override;
 	virtual void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted) override;
+
+public:
 	virtual void F_ApplySkillDamge(AActor* Player) override;
 	
 	

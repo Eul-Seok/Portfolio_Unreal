@@ -7,6 +7,7 @@
 #include "Components/CanvasPanel.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
+#include "Widget/Slot_Base.h"
 #include "Widget/SlotDragDropOperation.h"
 #include "Widget/QuickSlotWindow.h"
 #include "Widget/QuickSlot.h"
@@ -37,17 +38,17 @@ bool UHeadsUpDisplay::NativeOnDrop(const FGeometry& InGeometry, const FDragDropE
 	USlotDragDropOperation* Operation = Cast<USlotDragDropOperation>(InOperation);
 	if (Operation)
 	{
-		Operation->m_pDragBeginSlot->Image_Down->SetVisibility(ESlateVisibility::Hidden);
-		if (Operation->m_eDragBeginSlotType == ESlotType::E_QuickSlot)
+		Operation->F_GetDragBeginSlot()->F_GetImageDown()->SetVisibility(ESlateVisibility::Hidden);
+		if (Operation->F_GetDragBeginSlotType() == ESlotType::E_QuickSlot)
 		{
 			TArray<UQuickSlot*>* arQuickSlot = m_pGameMgr->F_GetWidgetMgr()->F_GetQuickSlotWindow()->F_GetQuickSlotArray();
-			uint8 nDragBeginIndex = Operation->m_nDragBeginIndex;
+			uint8 nDragBeginIndex = Operation->F_GetDragBeginIndex();
 			(*arQuickSlot)[nDragBeginIndex]->F_QuickSlotRegistrationCancle();
 			return true;
 		}
-		if (Operation->m_eDragBeginSlotType == ESlotType::E_InventorySlot)
+		if (Operation->F_GetDragBeginSlotType() == ESlotType::E_InventorySlot)
 		{
-			uint8 nDragBeginIndex = Operation->m_nDragBeginIndex;
+			uint8 nDragBeginIndex = Operation->F_GetDragBeginIndex();
 			m_pGameMgr->F_GetItemMgr()->F_ItemDrop(nDragBeginIndex);
 			return true;
 		}

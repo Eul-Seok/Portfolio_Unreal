@@ -32,6 +32,7 @@ protected:
 	class AGameMgr* m_pGameMgr;
 	FTimerHandle m_UpdateTimerHandle;
 	FVector2D m_ClickLocationDiff;
+
 protected:
 	UFUNCTION()
 	void CloseWindow();
@@ -39,7 +40,7 @@ protected:
 	void UpdateWindowLocationStop();
 
 public:
-	FORCEINLINE UTextBlock* F_GetTitleTextBlock() { return Title; }
+	FORCEINLINE UTextBlock* F_GetTitleTextBlock() const { return Title; }
 
 public:
 	UFUNCTION()

@@ -34,7 +34,7 @@ protected:
 protected:
 	virtual void NativeOnInitialized() override;
 
-private:
+protected:
 	void CreateQuickSlot(uint8 Row, uint8 Column);
 
 public:
@@ -45,6 +45,7 @@ public:
 public:
 	UFUNCTION()
 	void F_CallResetQuickSlot(uint8 PairIndex);
-	
+
+public:
 	FDele_Multi_TwoParams DELE_QuickSlotConnectionChange;
 };

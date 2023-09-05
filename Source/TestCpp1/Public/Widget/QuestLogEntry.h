@@ -41,8 +41,7 @@ protected:
 public:
 	void F_SetQuestInfo(AQuest* Quest);
 	
-	
-public:
+protected:
 	UFUNCTION()
 	void OnButtonActiveClicked();
 };

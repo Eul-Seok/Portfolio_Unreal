@@ -18,7 +18,7 @@ class TESTCPP1_API USlot_Base : public UUserWidget
 public:
 	USlot_Base(const FObjectInitializer& ObjectInitializer);
 
-public:
+protected:
 	UPROPERTY(meta = (BindWidget))
 	class UImage* Image_Item;
 	UPROPERTY(meta = (BindWidget))
@@ -51,11 +51,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class USoundBase* m_SoundDoNotUse;
 	
-
-public:
+protected:
 	virtual void NativeOnInitialized() override;
 	virtual void NativeConstruct() override;
-	
 	virtual FReply NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
@@ -63,4 +61,6 @@ public:
 	virtual void NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
 	virtual void NativeOnDragCancelled(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
 
+public:
+	FORCEINLINE UImage* F_GetImageDown() const { return Image_Down; }
 };

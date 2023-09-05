@@ -116,11 +116,6 @@ void ASkill_Buff::F_UpdateApplyBuff()
 	}
 }
 
-FTimerHandle* ASkill_Buff::F_GetBuffTimerHandle()
-{
-	return &m_BuffTimerHandle;
-}
-
 void ASkill_Buff::PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload)
 {
 	Super::PlayMontageNotifyBegin(NotifyName, BranchingPointNotifyPayload);

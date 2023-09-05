@@ -3,15 +3,15 @@
 
 #include "Widget/QuickSlotWindow.h"
 #include "Widget/QuickSlot.h"
+#include "Widget/QuickSlotData.h"
 #include "Widget/Slot_Base.h"
 #include "Widget/SlotType.h"
 #include "Manager/GameMgr.h"
 #include "Manager/InventoryManager.h"
 #include "Manager/ItemManager.h"
+#include "Manager/SkillManager.h"
 #include "Components/UniformGridPanel.h"
 #include "Components/ProgressBar.h"
-
-#include "Manager/SkillManager.h"
 
 UQuickSlotWindow::UQuickSlotWindow(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer)
@@ -59,7 +59,7 @@ void UQuickSlotWindow::F_QuickSlotDataSwap(uint8 Dst, uint8 Src)
 	ESlotType eSrcPairSlotType{};
 	EQuickSlotNumber eDstQuickSlotNumber{};
 	EQuickSlotNumber eSrcQuickSlotNumber{};
-	UQuickSlot::S_QUICKSLOTDATA sTmpQuickSlotData{};
+	FQuickSlotData sTmpQuickSlotData{};
 	ESlateVisibility eTmpDstCooldownBarVisibility{};
 
 	eDstPairSlotType = m_arQuickSlot[Dst]->F_GetQuickSlotData()->m_ePairSlotType;
@@ -88,9 +88,9 @@ void UQuickSlotWindow::F_QuickSlotDataSwap(uint8 Dst, uint8 Src)
 	m_arQuickSlot[Dst]->F_SetQuickSlotData(m_arQuickSlot[Src]->F_GetQuickSlotData());
 	m_arQuickSlot[Src]->F_SetQuickSlotData(&sTmpQuickSlotData);
 	
-	eTmpDstCooldownBarVisibility = m_arQuickSlot[Dst]->CooldownBar->Visibility;
-	m_arQuickSlot[Dst]->CooldownBar->SetVisibility(m_arQuickSlot[Src]->CooldownBar->Visibility);
-	m_arQuickSlot[Src]->CooldownBar->SetVisibility(eTmpDstCooldownBarVisibility);
+	eTmpDstCooldownBarVisibility = m_arQuickSlot[Dst]->F_GetCooldownBar()->Visibility;
+	m_arQuickSlot[Dst]->F_GetCooldownBar()->SetVisibility(m_arQuickSlot[Src]->F_GetCooldownBar()->Visibility);
+	m_arQuickSlot[Src]->F_GetCooldownBar()->SetVisibility(eTmpDstCooldownBarVisibility);
 
 	m_arQuickSlot[Dst]->F_UpdateQuickSlotIcon();
 	m_arQuickSlot[Src]->F_UpdateQuickSlotIcon();

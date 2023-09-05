@@ -20,7 +20,7 @@ protected:
 public:
 	virtual void F_CastSkill() override;
 	
-public:
+protected:
 	UFUNCTION()
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload);
 	virtual void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted);

@@ -61,9 +61,9 @@ public:
 
 public:
 	FORCEINLINE FName* F_GetSkillRowName() { return &m_SkillRowName; }
-	FORCEINLINE float F_GetCastTime() { return m_SkillData->m_CastTime; }
-	FORCEINLINE UDataTable* F_GetSkillDataTable() { return m_pSkillDataTable; }
-	FORCEINLINE FSkillData* F_GetSkillData() { return m_SkillData; }
+	FORCEINLINE float F_GetCastTime() const { return m_SkillData->m_CastTime; }
+	FORCEINLINE UDataTable* F_GetSkillDataTable() const { return m_pSkillDataTable; }
+	FORCEINLINE FSkillData* F_GetSkillData() const { return m_SkillData; }
 
 public:
 	FDele_Single DELE_CastSuccess;

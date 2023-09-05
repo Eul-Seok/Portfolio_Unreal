@@ -299,7 +299,7 @@ void AMyPlayerController::TargetingShift()
 		}
 		m_pCurrentTarget->F_CallClearTargetIndicator();
 		m_pCurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
-		m_pCurrentTarget->F_SetTarget();
+		m_pCurrentTarget->F_UpdateTarget();
 		DELE_TargetChange.Broadcast();
 	}
 	else
@@ -320,7 +320,7 @@ void AMyPlayerController::F_ToggleTargetingMode()
 			m_Player->F_TargetingModeOn();
 			m_bTargetingMode = true;
 			m_pCurrentTarget = (*setOverlapMonster).Array()[m_nTargetingIndex];
-			m_pCurrentTarget->F_SetTarget();
+			m_pCurrentTarget->F_UpdateTarget();
 			DELE_TargetChange.Broadcast();
 			DELE_ToggleTargetingMode.ExecuteIfBound();
 		}

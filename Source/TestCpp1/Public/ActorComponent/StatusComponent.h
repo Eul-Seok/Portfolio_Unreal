@@ -65,25 +65,22 @@ public:
 	virtual void F_ResetBuffAppliedStrikingPower() override;
 	virtual void F_ResetBuffAppliedDefensivePower() override;
 	virtual void F_ClearRegenTimer() override;
-	
 
 public:
-	FORCEINLINE float F_GetHealthCurrent() { return m_fHealthCurrent; }
-	FORCEINLINE float F_GetHealthMax() { return m_fHealthMax; }
-	FORCEINLINE float F_GetHealthNormalized() { return m_fHealthNormalized; }
-	FORCEINLINE float F_GetManaCurrent() { return m_fManaCurrent; }
-	FORCEINLINE float F_GetManaMax() { return m_fManaMax; }
-	FORCEINLINE float F_GetManaNormalized() { return m_fManaNormalized; }
-	FORCEINLINE uint8 F_GetLevel() { return m_nLevel; }
-
-
+	FORCEINLINE float F_GetHealthCurrent() const { return m_fHealthCurrent; }
+	FORCEINLINE float F_GetHealthMax() const { return m_fHealthMax; }
+	FORCEINLINE float F_GetHealthNormalized() const { return m_fHealthNormalized; }
+	FORCEINLINE float F_GetManaCurrent() const { return m_fManaCurrent; }
+	FORCEINLINE float F_GetManaMax() const { return m_fManaMax; }
+	FORCEINLINE float F_GetManaNormalized() const { return m_fManaNormalized; }
+	FORCEINLINE uint8 F_GetLevel() const { return m_nLevel; }
 
 public:
-	FORCEINLINE virtual float F_GetStrikingPower() override { return m_fStrikingPower; }
-	FORCEINLINE virtual float F_GetDefensivePower() override { return m_fDefensivePower; }
-	FORCEINLINE float F_GetAttackStrikingPower() { return m_fAttackStrikingPower; }
-	FORCEINLINE float F_GetBuffAppliedStrikingPower() { return m_fBuffAppliedStrikingPower; }
-	FORCEINLINE float F_GetBuffAppliedDefensivePower() { return m_fBuffAppliedDefensivePower; }
+	FORCEINLINE virtual float F_GetStrikingPower() const override { return m_fStrikingPower; }
+	FORCEINLINE virtual float F_GetDefensivePower() const override { return m_fDefensivePower; }
+	FORCEINLINE float F_GetAttackStrikingPower() const { return m_fAttackStrikingPower; }
+	FORCEINLINE float F_GetBuffAppliedStrikingPower() const { return m_fBuffAppliedStrikingPower; }
+	FORCEINLINE float F_GetBuffAppliedDefensivePower() const { return m_fBuffAppliedDefensivePower; }
 
 public:
 	FDele_Single DELE_RequestUpdateStatusBar;

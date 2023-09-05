@@ -68,14 +68,14 @@ void USkillSlot::NativeOnDragDetected(const FGeometry& InGeometry, const FPointe
 {
 	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
 	UDragIcon* pNewDragIcon = CreateWidget<UDragIcon>(this, W_DragIcon);
-	pNewDragIcon->m_pDragImage = Image_Item->Brush.GetResourceObject();
+	pNewDragIcon->F_SetDragImage(Image_Item->Brush.GetResourceObject());
 	USlotDragDropOperation* pDragDropOperation = Cast<USlotDragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USlotDragDropOperation::StaticClass()));
 	if (pDragDropOperation)
 	{
 		pDragDropOperation->DefaultDragVisual = pNewDragIcon;
-		pDragDropOperation->m_eDragBeginSlotType = m_eSlotType;
-		pDragDropOperation->m_nDragBeginIndex = m_nSkillWindowIndex;
-		pDragDropOperation->m_pDragBeginSlot = this;
+		pDragDropOperation->F_SetDragBeginSlotType(m_eSlotType);
+		pDragDropOperation->F_SetDragBeginIndex(m_nSkillWindowIndex);
+		pDragDropOperation->F_SetDragBeginSlot(this);
 		OutOperation = pDragDropOperation;
 	}
 }

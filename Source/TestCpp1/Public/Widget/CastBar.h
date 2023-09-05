@@ -29,8 +29,6 @@ protected:
 	UWidgetAnimation* Interrupted;
 	UPROPERTY(meta = (BindWidgetAnim), Transient)
 	UWidgetAnimation* Reset;
-
-public:
 	UPROPERTY()
 	class ASkill_Base* m_Skill;
 	UPROPERTY()
@@ -38,7 +36,7 @@ public:
 	UPROPERTY()
 	FWidgetAnimationDynamicEvent m_InterruptedAnimationEvent;
 
-public:
+protected:
 	void CompletedCast();
 	UFUNCTION()
 	void InterruptedCast();

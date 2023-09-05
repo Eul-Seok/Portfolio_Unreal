@@ -20,8 +20,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Text_Description;
 
-protected:
-
 public:
 	void F_UpdateQuestObjectiveInfo(const FQuestObjectiveData* pObjectiveData);
 };

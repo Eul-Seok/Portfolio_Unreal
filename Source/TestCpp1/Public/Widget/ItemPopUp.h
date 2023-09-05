@@ -14,7 +14,7 @@ class TESTCPP1_API UItemPopUp : public UUserWidget
 public:
 	UItemPopUp(const FObjectInitializer& ObjectInitializer);
 
-public:
+protected:
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Button_Use;
 	UPROPERTY(meta = (BindWidget))
@@ -42,6 +42,6 @@ protected:
 	void CallItemDestroy();
 
 public:
-	void SetInventoryIndex(uint8 Index);
+	void F_SetInventoryIndex(uint8 Index);
 	void F_SetItemPopUpInfo(EItemType ItemType);
 };

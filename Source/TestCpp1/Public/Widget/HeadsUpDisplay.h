@@ -62,11 +62,11 @@ public:
 	void F_DisplayTextAlert(FText* Text);
 
 public:
-	FORCEINLINE UCanvasPanel* F_GetWindowPanel() { return WindowPanel; }
-	FORCEINLINE UTargetBar* F_GetTargetBar() { return W_TargetBar; }
-	FORCEINLINE UCanvasPanel* F_GetCanvasPanelUI() { return CanvasPanel_UI; }
-	FORCEINLINE UConfirmWindow* F_GetConfirmWindow() { return W_ConfirmWindow; }
-	FORCEINLINE UQuestObjectives* F_GetQuestObjectives() { return W_QuestObjectives; }
-	FORCEINLINE UBuffPanel* F_GetBuffPanel() { return W_BuffPanel; }
-	FORCEINLINE UGameEndMenu* F_GetGameEndMenu() { return W_GameEndMenu; }
+	FORCEINLINE UCanvasPanel* F_GetWindowPanel() const { return WindowPanel; }
+	FORCEINLINE UTargetBar* F_GetTargetBar() const { return W_TargetBar; }
+	FORCEINLINE UCanvasPanel* F_GetCanvasPanelUI() const { return CanvasPanel_UI; }
+	FORCEINLINE UConfirmWindow* F_GetConfirmWindow() const { return W_ConfirmWindow; }
+	FORCEINLINE UQuestObjectives* F_GetQuestObjectives() const { return W_QuestObjectives; }
+	FORCEINLINE UBuffPanel* F_GetBuffPanel() const { return W_BuffPanel; }
+	FORCEINLINE UGameEndMenu* F_GetGameEndMenu() const { return W_GameEndMenu; }
 };

@@ -38,7 +38,7 @@ public:
 	void F_DestroyPickUpRange();
 	
 public:
-	FORCEINLINE UStaticMeshComponent* GetStaticMeshComponent() { return ItemMesh; }
+	FORCEINLINE UStaticMeshComponent* GetStaticMeshComponent() const { return ItemMesh; }
 	FORCEINLINE FName* F_GetRowName() { return &m_RowName; }
 };
 

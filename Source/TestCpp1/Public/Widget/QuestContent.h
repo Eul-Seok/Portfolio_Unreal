@@ -65,6 +65,8 @@ protected:
 
 public:
 	void F_SetQuestInfo(AQuest* Quest);
+
+protected:
 	UFUNCTION()
 	void OnButtonRejectClicked();
 	UFUNCTION()

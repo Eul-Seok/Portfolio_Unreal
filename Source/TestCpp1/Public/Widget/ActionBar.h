@@ -37,7 +37,7 @@ protected:
 protected:
 	class UPlayerStatusComponent* m_PlayerStatusComponent;
 
-public:
+protected:
 	UFUNCTION()
 	void CallUpdateStatusBar();
 

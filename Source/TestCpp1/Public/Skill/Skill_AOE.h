@@ -38,6 +38,6 @@ protected:
 	virtual void ApplySkillAffect() override;
 	void SpawnImpact();
 
-public:
+protected:
 	virtual void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload) override;
 };

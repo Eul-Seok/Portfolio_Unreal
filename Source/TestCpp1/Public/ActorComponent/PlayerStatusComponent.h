@@ -101,15 +101,15 @@ public:
 	void F_SetStatusPoint(uint8 nNewStatusPoint);
 
 public:
-	FORCEINLINE float F_GetExpMax() { return m_fExpMax; }
-	FORCEINLINE float F_GetExpCurrent() { return m_fExpCurrent; }
-	FORCEINLINE float F_GetExpNormalized() { return m_fExpNormalized; }
-	FORCEINLINE uint8 F_GetStrength() { return m_nStrength; }
-	FORCEINLINE uint8 F_GetAgility() { return m_nAgility; }
-	FORCEINLINE uint8 F_GetConstitution(){ return m_nConstitution; }
-	FORCEINLINE uint8 F_GetIntelligence() { return m_nIntelligence; }
-	FORCEINLINE uint8 F_GetSkillPoint() { return m_nSkillPoint; }
-	FORCEINLINE uint8 F_GetStatusPoint() { return m_nStatusPoint; }
+	FORCEINLINE float F_GetExpMax() const { return m_fExpMax; }
+	FORCEINLINE float F_GetExpCurrent() const { return m_fExpCurrent; }
+	FORCEINLINE float F_GetExpNormalized() const { return m_fExpNormalized; }
+	FORCEINLINE uint8 F_GetStrength() const { return m_nStrength; }
+	FORCEINLINE uint8 F_GetAgility() const { return m_nAgility; }
+	FORCEINLINE uint8 F_GetConstitution() const { return m_nConstitution; }
+	FORCEINLINE uint8 F_GetIntelligence() const { return m_nIntelligence; }
+	FORCEINLINE uint8 F_GetSkillPoint() const { return m_nSkillPoint; }
+	FORCEINLINE uint8 F_GetStatusPoint() const { return m_nStatusPoint; }
 
 public:
 	FDele_Multi DELE_RequestUpdateStatusBar;

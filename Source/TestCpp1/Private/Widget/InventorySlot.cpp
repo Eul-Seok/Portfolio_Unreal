@@ -60,14 +60,14 @@ void UInventorySlot::NativeOnDragDetected(const FGeometry& InGeometry, const FPo
 {
 	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
 	UDragIcon* pNewDragIcon = CreateWidget<UDragIcon>(this, W_DragIcon);
-	pNewDragIcon->m_pDragImage = Image_Item->Brush.GetResourceObject();
+	pNewDragIcon->F_SetDragImage(Image_Item->Brush.GetResourceObject());
 	USlotDragDropOperation* pDragDropOperation = Cast<USlotDragDropOperation>(UWidgetBlueprintLibrary::CreateDragDropOperation(USlotDragDropOperation::StaticClass()));
 	if (pDragDropOperation)
 	{
 		pDragDropOperation->DefaultDragVisual = pNewDragIcon;
-		pDragDropOperation->m_eDragBeginSlotType = m_eSlotType;
-		pDragDropOperation->m_nDragBeginIndex = m_nInventoryIndex;
-		pDragDropOperation->m_pDragBeginSlot = this;
+		pDragDropOperation->F_SetDragBeginSlotType(m_eSlotType);
+		pDragDropOperation->F_SetDragBeginIndex(m_nInventoryIndex);
+		pDragDropOperation->F_SetDragBeginSlot(this);
 		OutOperation = pDragDropOperation;
 	}
 }
@@ -78,11 +78,11 @@ bool UInventorySlot::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEv
 	USlotDragDropOperation* Operation = Cast<USlotDragDropOperation>(InOperation);
 	if (Operation)
 	{
-		if (Operation->m_eDragBeginSlotType == m_eSlotType)
+		if (Operation->F_GetDragBeginSlotType() == m_eSlotType)
 		{
-			m_pGameMgr->F_GetInventoryMgr()->F_ItemSwap(Operation->m_nDragBeginIndex, m_nInventoryIndex);
+			m_pGameMgr->F_GetInventoryMgr()->F_ItemSwap(Operation->F_GetDragBeginIndex(), m_nInventoryIndex);
 		}
-		Operation->m_pDragBeginSlot->Image_Down->SetVisibility(ESlateVisibility::Hidden);
+		Operation->F_GetDragBeginSlot()->F_GetImageDown()->SetVisibility(ESlateVisibility::Hidden);
 		Image_Down->SetVisibility(ESlateVisibility::Hidden);
 		UGameplayStatics::PlaySound2D(GetWorld(), m_SoundDrop);
 		return true;

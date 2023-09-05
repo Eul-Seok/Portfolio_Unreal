@@ -38,7 +38,7 @@ public:
 	void F_SetInventoryIndex(uint8 InventoryIndex);
 
 public:
-	FORCEINLINE uint8 F_GetInventoryIndex() { return m_nInventoryIndex; }
+	FORCEINLINE uint8 F_GetInventoryIndex() const { return m_nInventoryIndex; }
 
 public:
 	FDele_Single DELE_ButtonYes;

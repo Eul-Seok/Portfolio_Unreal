@@ -24,6 +24,30 @@ UItemManager::UItemManager():
 {
 }
 
+bool UItemManager::ApplyAffect(uint8 Index)
+{
+
+	EAffectType ItemAffect = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_eAffectType;
+	float ItemValueApplied = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_fAffectValue;
+	m_Interface_Affect = Cast<IInterface_Affect>(m_Player->F_GetGameMgr()->F_GetAffectMgr()->F_GetAffect(ItemAffect));
+	bool bSuccess = m_Interface_Affect->F_Apply(m_Player, ItemValueApplied, EOperatorType::E_Plus);
+	return bSuccess;
+}
+
+void UItemManager::ItemSpawn(uint8 Index)
+{
+	UWorld* world = GetWorld();
+	TSubclassOf<AItem> SpawnClass = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_ItemClass;
+	FVector SpawnLocation = m_Player->GetActorLocation();
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	FVector ForceVector = m_Player->GetActorForwardVector() * 30000;
+
+	AItem* SpawnedItem = world->SpawnActor<AItem>(SpawnClass, SpawnLocation, FRotator::ZeroRotator, SpawnParameters);
+	SpawnedItem->GetStaticMeshComponent()->SetSimulatePhysics(true);
+	SpawnedItem->GetStaticMeshComponent()->AddForce(ForceVector, "", true);
+}
+
 void UItemManager::F_Init()
 {
 	m_pGameMgr = GetWorld() != nullptr ?
@@ -89,31 +113,7 @@ bool UItemManager::F_ItemDestroy(uint8 Index)
 	return true;
 }
 
-bool UItemManager::ApplyAffect(uint8 Index)
-{
-	
-	EAffectType ItemAffect = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_eAffectType;
-	float ItemValueApplied = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_fAffectValue;
-	m_Interface_Affect = Cast<IInterface_Affect>(m_Player->F_GetGameMgr()->F_GetAffectMgr()->F_GetAffect(ItemAffect));
-	bool bSuccess = m_Interface_Affect->F_Apply(m_Player, ItemValueApplied, EOperatorType::E_Plus);
-	return bSuccess;
-}
-
-void UItemManager::ItemSpawn(uint8 Index)
-{
-	UWorld* world = GetWorld();
-	TSubclassOf<AItem> SpawnClass = (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_ItemClass;
-	FVector SpawnLocation = m_Player->GetActorLocation();
-	FActorSpawnParameters SpawnParameters;
-	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	FVector ForceVector = m_Player->GetActorForwardVector() * 30000;
-
-	AItem* SpawnedItem = world->SpawnActor<AItem>(SpawnClass, SpawnLocation, FRotator::ZeroRotator, SpawnParameters);
-	SpawnedItem->GetStaticMeshComponent()->SetSimulatePhysics(true);
-	SpawnedItem->GetStaticMeshComponent()->AddForce(ForceVector, "", true);
-}
-
-TArray<class UInventorySlot*>* UItemManager::F_GetInventorySlotArray()
+TArray<class UInventorySlot*>* UItemManager::F_GetInventorySlotArray() const
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetInventory()->F_GetarInventorySlot();
 }

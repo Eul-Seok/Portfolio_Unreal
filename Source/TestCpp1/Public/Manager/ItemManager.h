@@ -23,15 +23,19 @@ protected:
 	class ATestCpp1Character* m_Player;
 	IInterface_Affect* m_Interface_Affect;
 
+protected:
+	bool ApplyAffect(uint8 Index);
+	void ItemSpawn(uint8 Index);
+
 public:	
 	void F_Init();
 	bool F_ItemUse(uint8 Index);
 	bool F_ItemDrop(uint8 Index);
 	bool F_ItemDestroy(uint8 Index);
-	bool ApplyAffect(uint8 Index);
-	void ItemSpawn(uint8 Index);
 
-	TArray<class UInventorySlot*>* F_GetInventorySlotArray();
-	
+public:
+	TArray<class UInventorySlot*>* F_GetInventorySlotArray() const;
+
+public:
 	FDele_Single_OneParam DELE_InventoryItemDestroy;
 };

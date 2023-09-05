@@ -30,6 +30,7 @@ protected:
 
 protected:
 	virtual void NativeOnInitialized() override;
+
 public:
 	void F_UpdateObjectives();
 };

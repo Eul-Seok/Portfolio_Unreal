@@ -29,5 +29,5 @@ public:
 
 public:
 	FORCEINLINE TArray<AQuest*>* F_GetarQuest() { return &m_arQuest; }
-	FORCEINLINE AQuest* F_GetActiveQuest() { return m_ActiveQuest; }
+	FORCEINLINE AQuest* F_GetActiveQuest() const { return m_ActiveQuest; }
 };

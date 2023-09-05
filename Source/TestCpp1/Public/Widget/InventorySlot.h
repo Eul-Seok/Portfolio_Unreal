@@ -16,7 +16,6 @@ public:
 	UInventorySlot(const FObjectInitializer& ObjectInitializer);
 
 protected:
-
 	UPROPERTY()
 	uint8 m_nInventoryIndex;
 	UPROPERTY()
@@ -47,6 +46,6 @@ public:
 	void F_SetItemData(FItemData* ItemData);
 
 public:
-	FORCEINLINE FItemData* F_GetItemData() { return m_pItemData; }
-	FORCEINLINE UItemPopUp* F_GetItemPopUp() { return m_pItemPopUp; }
+	FORCEINLINE FItemData* F_GetItemData() const { return m_pItemData; }
+	FORCEINLINE UItemPopUp* F_GetItemPopUp() const { return m_pItemPopUp; }
 };

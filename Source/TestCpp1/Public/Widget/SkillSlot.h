@@ -57,7 +57,7 @@ public:
 	void F_SetSkillData(FSkillData* SKillData);
 
 public:
-	FORCEINLINE FSkillData* F_GetSkillData() { return m_pSkillData; }
-	FORCEINLINE bool F_GetbPurchased() { return m_bPurchased; }
+	FORCEINLINE FSkillData* F_GetSkillData() const { return m_pSkillData; }
+	FORCEINLINE bool F_GetbPurchased() const { return m_bPurchased; }
 	FORCEINLINE FTimerHandle* F_GetCooldownTimerHandle() { return &m_CooldownTimerHandle; }
 };

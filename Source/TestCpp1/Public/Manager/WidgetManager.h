@@ -131,26 +131,26 @@ public:
 	void F_ShowGameMethod();
 
 public:
-	FORCEINLINE UHeadsUpDisplay* F_GetHUD() { return m_pHUD; }
-	FORCEINLINE UInventory* F_GetInventory() { return m_pInventory; }
-	FORCEINLINE USkillWindow* F_GetSkillWindow() { return m_pSkillWindow; }
-	FORCEINLINE UQuickSlotWindow* F_GetQuickSlotWindow() { return m_pQuickSlotWindow; }
-	FORCEINLINE UQuestContent* F_GetQuestContent() { return m_pQuestContent; }
-	FORCEINLINE UQuestWindow* F_GetQuestWindow() { return m_pQuestWindow; }
-	FORCEINLINE bool F_GetbOpenedAnyUI() { return m_bIsOpenedAnyUI; }
+	FORCEINLINE UHeadsUpDisplay* F_GetHUD() const { return m_pHUD; }
+	FORCEINLINE UInventory* F_GetInventory() const { return m_pInventory; }
+	FORCEINLINE USkillWindow* F_GetSkillWindow() const { return m_pSkillWindow; }
+	FORCEINLINE UQuickSlotWindow* F_GetQuickSlotWindow() const { return m_pQuickSlotWindow; }
+	FORCEINLINE UQuestContent* F_GetQuestContent() const { return m_pQuestContent; }
+	FORCEINLINE UQuestWindow* F_GetQuestWindow() const { return m_pQuestWindow; }
+	FORCEINLINE bool F_GetbOpenedAnyUI() const { return m_bIsOpenedAnyUI; }
 
-	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPInventorySlot() { return W_InventorySlot; }
-	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPQuickSlot(){ return W_QuickSlot; }
-	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPSkillSlot(){ return W_SkillSlot; }
-	FORCEINLINE TSubclassOf<USkillToolTip> F_GetBPSkillToolTip(){ return W_SkillToolTip; }
-	FORCEINLINE TSubclassOf<UItemPopUp> F_GetBPItemPopUp(){ return W_ItemPopUp; }
-	FORCEINLINE TSubclassOf<UItemToolTip> F_GetBPItemToolTip(){ return W_ItemToolTip; }
-	FORCEINLINE TSubclassOf<UDragIcon> F_GetBPDragIcon(){ return W_DragIcon; }
-	FORCEINLINE TSubclassOf<UQuestObjectiveItem> F_GetBPQuestObjectiveItem(){ return W_QuestObjectiveItem; }
-	FORCEINLINE TSubclassOf<UQuestLogEntry> F_GetBPQuestLogEntry(){ return W_QuestLogEntry; }
-	FORCEINLINE TSubclassOf<UQuestSingleObjective> F_GetBPQuestSingleObjective(){ return W_QuestSingleObjective; }
-	FORCEINLINE TSubclassOf<UBuffIcon> F_GetBPBuffIcon(){ return W_BuffIcon; }
-	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPRewardSlot(){ return W_RewardSlot; }
+	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPInventorySlot() const { return W_InventorySlot; }
+	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPQuickSlot() const { return W_QuickSlot; }
+	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPSkillSlot() const { return W_SkillSlot; }
+	FORCEINLINE TSubclassOf<USkillToolTip> F_GetBPSkillToolTip() const { return W_SkillToolTip; }
+	FORCEINLINE TSubclassOf<UItemPopUp> F_GetBPItemPopUp() const { return W_ItemPopUp; }
+	FORCEINLINE TSubclassOf<UItemToolTip> F_GetBPItemToolTip() const { return W_ItemToolTip; }
+	FORCEINLINE TSubclassOf<UDragIcon> F_GetBPDragIcon() const { return W_DragIcon; }
+	FORCEINLINE TSubclassOf<UQuestObjectiveItem> F_GetBPQuestObjectiveItem() const { return W_QuestObjectiveItem; }
+	FORCEINLINE TSubclassOf<UQuestLogEntry> F_GetBPQuestLogEntry() const { return W_QuestLogEntry; }
+	FORCEINLINE TSubclassOf<UQuestSingleObjective> F_GetBPQuestSingleObjective() const { return W_QuestSingleObjective; }
+	FORCEINLINE TSubclassOf<UBuffIcon> F_GetBPBuffIcon() const { return W_BuffIcon; }
+	FORCEINLINE TSubclassOf<USlot_Base> F_GetBPRewardSlot() const { return W_RewardSlot; }
 
 public:
 	FDele_Multi DELE_UpdateSkillSlotIconTint;

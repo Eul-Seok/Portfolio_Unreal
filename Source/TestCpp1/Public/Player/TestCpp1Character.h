@@ -125,7 +125,7 @@ protected:
 	FOnMontageEnded CompleteDelegatePlayingMontage;
 	FOnMontageEnded CompleteDelegateEquip;
 		
-public:
+protected:
 	UFUNCTION()
 	void PlayMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointNotifyPayload);
 	void FunctionToExecuteOnAnimationEnd(UAnimMontage* animMontage, bool bInterrupted);
@@ -168,20 +168,20 @@ public:
 	void F_SetbPlayingMontage(bool IsPlayingMontage);
 
 public:
-	FORCEINLINE UPlayerStatusComponent* F_GetPlayerStatusComponent() { return PlayerStatusComponent; }
-	FORCEINLINE UPlayerSkillsComponent* F_GetPlayerSkillsComponent() { return PlayerSkillsComponent; }
-	FORCEINLINE USceneComponent* F_GetSceneWeaponRigth() { return Scene_WeaponRight; }
-	FORCEINLINE USceneComponent* F_GetSceneUnequipSword() { return Scene_UnequipSword; }
+	FORCEINLINE UPlayerStatusComponent* F_GetPlayerStatusComponent() const { return PlayerStatusComponent; }
+	FORCEINLINE UPlayerSkillsComponent* F_GetPlayerSkillsComponent() const { return PlayerSkillsComponent; }
+	FORCEINLINE USceneComponent* F_GetSceneWeaponRigth() const { return Scene_WeaponRight; }
+	FORCEINLINE USceneComponent* F_GetSceneUnequipSword() const { return Scene_UnequipSword; }
 	FORCEINLINE TSet<AItem*>* F_GetOverLapItem() { return &m_setOverlapItem; }
 	FORCEINLINE TSet<AMonster*>* F_GetOverLapMonster() { return &m_setOverlapMonster; }
-	FORCEINLINE AWeapon_Base* F_GetRightHandWeapon() { return m_RightHandWeapon; }
-	FORCEINLINE AWeapon_Base* F_GetWeapon() { return m_Weapon; }
-	FORCEINLINE AGameMgr* F_GetGameMgr() { return m_pGameMgr; }
-	FORCEINLINE bool F_GetbCasting() { return m_bCasting; }
-	FORCEINLINE bool F_GetbPlayingMontage() { return m_bPlayingMontage; }
-	FORCEINLINE UParticleSystem* F_GetAttackImpact() { return m_AttackImpact; }
-	FORCEINLINE ANPC* F_GetOverlapNPC() { return m_pOverlapNPC; }
-	FORCEINLINE ESkillWeaponType F_GetCurrentSkillWeaponType() { return m_CurrentSkillWeaponType; }
+	FORCEINLINE AWeapon_Base* F_GetRightHandWeapon() const { return m_RightHandWeapon; }
+	FORCEINLINE AWeapon_Base* F_GetWeapon() const { return m_Weapon; }
+	FORCEINLINE AGameMgr* F_GetGameMgr() const { return m_pGameMgr; }
+	FORCEINLINE bool F_GetbCasting() const { return m_bCasting; }
+	FORCEINLINE bool F_GetbPlayingMontage() const { return m_bPlayingMontage; }
+	FORCEINLINE UParticleSystem* F_GetAttackImpact() const { return m_AttackImpact; }
+	FORCEINLINE ANPC* F_GetOverlapNPC() const { return m_pOverlapNPC; }
+	FORCEINLINE ESkillWeaponType F_GetCurrentSkillWeaponType() const { return m_CurrentSkillWeaponType; }
 
 protected:
 	UFUNCTION()

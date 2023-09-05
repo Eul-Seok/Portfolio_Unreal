@@ -49,13 +49,13 @@ public:
 	void F_NPCUpdateTextRenderHasQuest();
 
 public:
-	FORCEINLINE UInventoryManager* F_GetInventoryMgr() { return m_pInventoryMgr; }
-	FORCEINLINE UItemManager* F_GetItemMgr() { return m_pItemMgr; }
-	FORCEINLINE UWidgetManager* F_GetWidgetMgr() { return m_pWidgetMgr; }
-	FORCEINLINE UAffectManager* F_GetAffectMgr() { return m_pAffectMgr; }
-	FORCEINLINE USkillManager* F_GetSkillMgr() { return m_pSkillMgr; }
-	FORCEINLINE USoundManager* F_GetSoundMgr() { return m_pSoundMgr; }
-	FORCEINLINE UQuestLog* F_GetQuestLogComponent() { return m_QuestLogComponent; }
+	FORCEINLINE UInventoryManager* F_GetInventoryMgr() const { return m_pInventoryMgr; }
+	FORCEINLINE UItemManager* F_GetItemMgr() const { return m_pItemMgr; }
+	FORCEINLINE UWidgetManager* F_GetWidgetMgr() const { return m_pWidgetMgr; }
+	FORCEINLINE UAffectManager* F_GetAffectMgr() const { return m_pAffectMgr; }
+	FORCEINLINE USkillManager* F_GetSkillMgr() const { return m_pSkillMgr; }
+	FORCEINLINE USoundManager* F_GetSoundMgr() const { return m_pSoundMgr; }
+	FORCEINLINE UQuestLog* F_GetQuestLogComponent() const { return m_QuestLogComponent; }
 
 public:
 	FDele_Multi DELE_GameClear;

@@ -81,12 +81,12 @@ void UInventoryManager::F_SetQuickSlotMap(uint8 InventoryIndex, EQuickSlotNumber
 	m_QuickSlotMap.Emplace(InventoryIndex, QuickSlotNumber);
 }
 
-TArray<class UInventorySlot*>* UInventoryManager::F_GetInventorySlotArray()
+TArray<class UInventorySlot*>* UInventoryManager::F_GetInventorySlotArray() const
 {
 	return m_pGameMgr->F_GetWidgetMgr()->F_GetInventory()->F_GetarInventorySlot();
 }
 
-bool UInventoryManager::F_GetIsEnableItem(uint8 Index)
+bool UInventoryManager::F_GetIsEnableItem(uint8 Index) const
 {
 	return (*F_GetInventorySlotArray())[Index]->F_GetItemData()->m_IsEnable;
 }

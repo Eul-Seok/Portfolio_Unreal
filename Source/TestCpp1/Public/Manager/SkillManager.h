@@ -54,12 +54,12 @@ public:
 	void F_SetQuickSlotMap(uint8 SkillWindowIndex, EQuickSlotNumber eQuickSlotNumber);
 
 public:
-	FORCEINLINE FSkillData* F_GetSkillDataDefault() { return m_pSkillDataDefault; }
-	FORCEINLINE uint8 F_GetLength() { return m_nLength; }
-	FORCEINLINE uint8 F_GetRowCount() { return m_nSkillRowCount; }
-	FORCEINLINE uint8 F_GetColumnCount() { return m_nSkillColumnCount; }
-	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber) { return *m_QuickSlotMap.FindKey(eQuickSlotNumber); }
-	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 SkillWindowIndex) { return m_QuickSlotMap[SkillWindowIndex]; }
-	FORCEINLINE uint8 F_GetSpawnSkillLevel() { return m_nSpawnSkillLevel; }
-	TArray<USkillSlot*>* F_GetSkillSlotArray();
+	FORCEINLINE FSkillData* F_GetSkillDataDefault() const { return m_pSkillDataDefault; }
+	FORCEINLINE uint8 F_GetLength() const { return m_nLength; }
+	FORCEINLINE uint8 F_GetRowCount() const { return m_nSkillRowCount; }
+	FORCEINLINE uint8 F_GetColumnCount() const { return m_nSkillColumnCount; }
+	FORCEINLINE uint8 F_GetQuickSlotMapKey(EQuickSlotNumber eQuickSlotNumber) const { return *m_QuickSlotMap.FindKey(eQuickSlotNumber); }
+	FORCEINLINE EQuickSlotNumber F_GetQuickSlotMapValue(uint8 SkillWindowIndex) const { return m_QuickSlotMap[SkillWindowIndex]; }
+	FORCEINLINE uint8 F_GetSpawnSkillLevel() const { return m_nSpawnSkillLevel; }
+	TArray<USkillSlot*>* F_GetSkillSlotArray() const;
 };

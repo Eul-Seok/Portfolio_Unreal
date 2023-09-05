@@ -84,9 +84,9 @@ public:
 	void F_SetCurrentTarget(AMonster* Monster);
 
 public:
-	FORCEINLINE AMonster* F_GetCurrentTarget() { return m_pCurrentTarget; }
-	FORCEINLINE bool F_GetIsJumpInput() { return m_bJumpInput; }
-	FORCEINLINE bool F_GetIsTargetingMode() { return m_bTargetingMode; }
+	FORCEINLINE AMonster* F_GetCurrentTarget() const { return m_pCurrentTarget; }
+	FORCEINLINE bool F_GetIsJumpInput() const { return m_bJumpInput; }
+	FORCEINLINE bool F_GetIsTargetingMode() const { return m_bTargetingMode; }
 
 public:
 	FDele_Single DELE_ToggleTargetingMode;

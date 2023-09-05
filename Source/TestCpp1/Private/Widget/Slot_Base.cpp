@@ -72,7 +72,7 @@ void USlot_Base::NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragD
 	USlotDragDropOperation* Operation = Cast<USlotDragDropOperation>(InOperation);
 	if (Operation)
 	{
-		if (Operation->m_pDragBeginSlot != this)
+		if (Operation->F_GetDragBeginSlot() != this)
 		{
 			Image_Down->SetVisibility(ESlateVisibility::Hidden);
 		}
@@ -86,7 +86,7 @@ void USlot_Base::NativeOnDragCancelled(const FDragDropEvent& InDragDropEvent, UD
 	USlotDragDropOperation* Operation = Cast<USlotDragDropOperation>(InOperation);
 	if (Operation)
 	{
-		Operation->m_pDragBeginSlot->Image_Down->SetVisibility(ESlateVisibility::Hidden);
+		Operation->F_GetDragBeginSlot()->F_GetImageDown()->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
 

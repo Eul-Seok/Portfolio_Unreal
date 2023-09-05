@@ -15,6 +15,7 @@ class ATestCpp1GameMode : public AGameModeBase
 
 public:
 	ATestCpp1GameMode();
+
 protected:
     virtual void BeginPlay() override;
 

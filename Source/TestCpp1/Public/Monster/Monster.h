@@ -48,10 +48,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UMonsterSkillsComponent* MonsterSkillsComponent;
 
-public:	
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	virtual void NotifyActorOnClicked(FKey ButtonPressed = EKeys::LeftMouseButton)override;
-
 protected:
 	FTimerHandle m_MonsterDeathTimer;
 	FTimerHandle m_MonsterDestroyTimer;
@@ -96,6 +92,9 @@ protected:
 	class UTargetBarMini* m_TargetBarMini;
 	bool bDisplayTargetBarMini;
 
+protected:
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void NotifyActorOnClicked(FKey ButtonPressed = EKeys::LeftMouseButton)override;
 
 protected:
 	void RemoveBinding();
@@ -114,8 +113,7 @@ protected:
 	void DisplayDamageIndicator(float fDamage);
 
 public:
-	AGameMgr* F_GetGameMgr();
-	void F_SetTarget();
+	void F_UpdateTarget();
 	UFUNCTION()
 	void F_CallClearTargetIndicator();
 	void F_Attack();
@@ -130,15 +128,16 @@ public:
 	void F_SetSpawner(AMonsterSpawner* Spawner);
 
 public:
+	FORCEINLINE AGameMgr* F_GetGameMgr() const { return m_pGameMgr; }
 	FORCEINLINE FText* F_GetMonsterName() { return &m_MonsterName; }
-	FORCEINLINE UMonsterStatusComponent* F_GetMonsterStatusComponent() { return MonsterStatusComponent; }
-	FORCEINLINE UMonsterSkillsComponent* F_GetMonsterSkillsComponent() { return MonsterSkillsComponent; }
-	FORCEINLINE USceneComponent* F_GetSceneStoneObject() { return Scene_StoneObject; }
-	FORCEINLINE AWeapon_Base* F_GetLeftWeapon() { return m_LeftWeapon; }
-	FORCEINLINE AWeapon_Base* F_GetRightWeapon() { return m_RightWeapon; }
-	FORCEINLINE float F_GetPatrolSpeed() { return m_PatrolSpeed; }
-	FORCEINLINE float F_GetChaseSpeed() { return m_ChaseSpeed; }
-	FORCEINLINE UParticleSystem* F_GetAttackImpact() { return m_AttackImpact; }
+	FORCEINLINE UMonsterStatusComponent* F_GetMonsterStatusComponent() const { return MonsterStatusComponent; }
+	FORCEINLINE UMonsterSkillsComponent* F_GetMonsterSkillsComponent() const { return MonsterSkillsComponent; }
+	FORCEINLINE USceneComponent* F_GetSceneStoneObject() const { return Scene_StoneObject; }
+	FORCEINLINE AWeapon_Base* F_GetLeftWeapon() const { return m_LeftWeapon; }
+	FORCEINLINE AWeapon_Base* F_GetRightWeapon() const { return m_RightWeapon; }
+	FORCEINLINE float F_GetPatrolSpeed() const { return m_PatrolSpeed; }
+	FORCEINLINE float F_GetChaseSpeed() const { return m_ChaseSpeed; }
+	FORCEINLINE UParticleSystem* F_GetAttackImpact() const { return m_AttackImpact; }
 
 public:
 	FDele_Single DELE_TargetStatusBarUpdate;

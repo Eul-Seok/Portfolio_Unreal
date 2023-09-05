@@ -20,9 +20,17 @@ public:
 public:
 	virtual void NativeConstruct() override;
 
-public:
+protected:
 	UPROPERTY(meta = (BindWidget))
 	class UImage* DragIcon;
+
+protected:
 	UPROPERTY(EditAnywhere)
 	class UObject* m_pDragImage;
+
+public:
+	void F_SetDragImage(UObject* DragImage);
+
+public:
+	FORCEINLINE UObject* F_GetDragImage() const { return m_pDragImage; }
 };
